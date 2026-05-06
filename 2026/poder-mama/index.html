@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Poder Invisible de Mamá | Charla por el Mes de Mayo - Lcda. Maribel Godoy</title>
+<meta name="description" content="Charla de neurociencia para empresas y colegios en el Mes de la Madre. Descubre cómo el bienestar materno moldea el cerebro de los hijos. Imparte: Lcda. Maribel Godoy, especialista en Neuropsicología y Educación.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="img/logo-neuroeduca.jpg">
+
+<!-- Fuentes: Bebas Neue para títulos, Roboto para texto (marca NeuroEduca) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  /* ============ RESET Y VARIABLES ============ */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    /* Paleta lila Mes de la Madre */
+    --lila-50: #FAF5FE;
+    --lila-100: #F3E8FD;
+    --lila-200: #E5D0FB;
+    --lila-300: #D0AEF7;
+    --lila-400: #B584F0;
+    --lila-500: #9B5FE5;
+    --lila-600: #7E3FCC;
+    --lila-700: #6529A8;
+    --lila-800: #4F2189;
+    --lila-900: #371562;
+    
+    --rosa-acento: #F4A1C7;
+    --crema: #FFF8F3;
+    --texto-principal: #2D1B4E;
+    --texto-suave: #6B5B84;
+    --blanco: #FFFFFF;
+    
+    --fuente-titulo: 'Bebas Neue', sans-serif;
+    --fuente-texto: 'Roboto', sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: var(--fuente-texto);
+    color: var(--texto-principal);
+    background: var(--lila-50);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  /* ============ TIPOGRAFÍA ============ */
+  h1, h2, h3 {
+    font-family: var(--fuente-titulo);
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 1.1;
+  }
+  
+  /* ============ BARRA NAVEGACIÓN SUPERIOR ============ */
+  .nav {
+    background: var(--blanco);
+    padding: 12px 5%;
+    box-shadow: 0 2px 12px rgba(79, 33, 137, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-marca {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .nav-logo {
+    height: 44px;
+    width: auto;
+  }
+  
+  .nav-cta {
+    background: var(--lila-600);
+    color: var(--blanco);
+    padding: 10px 22px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .nav-cta:hover {
+    background: var(--lila-700);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(126, 63, 204, 0.3);
+  }
+  
+  /* ============ HERO ============ */
+  .hero {
+    background: linear-gradient(135deg, var(--lila-100) 0%, var(--lila-200) 50%, var(--lila-300) 100%);
+    padding: 80px 5% 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(244, 161, 199, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -100px;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(155, 95, 229, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  
+  .hero-contenido {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .hero-etiqueta {
+    display: inline-block;
+    background: var(--lila-700);
+    color: var(--blanco);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  
+  .hero h1 {
+    font-size: clamp(48px, 7vw, 88px);
+    color: var(--lila-900);
+    margin-bottom: 24px;
+    letter-spacing: 2px;
+  }
+  
+  .hero h1 .destacado {
+    color: var(--lila-600);
+    display: block;
+    font-size: 1.2em;
+  }
+  
+  .hero-subtitulo {
+    font-size: 19px;
+    color: var(--texto-principal);
+    line-height: 1.5;
+    margin-bottom: 32px;
+    font-weight: 300;
+    max-width: 540px;
+  }
+  
+  .hero-datos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  
+  .dato-pill {
+    background: var(--blanco);
+    padding: 10px 18px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--lila-800);
+    box-shadow: 0 4px 12px rgba(79, 33, 137, 0.08);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .dato-pill::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--lila-600);
+    border-radius: 50%;
+  }
+  
+  .hero-cta-grupo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+  
+  .btn-principal {
+    background: var(--lila-700);
+    color: var(--blanco);
+    padding: 18px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 24px rgba(101, 41, 168, 0.35);
+  }
+  
+  .btn-principal:hover {
+    background: var(--lila-800);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(101, 41, 168, 0.45);
+  }
+  
+  .btn-principal svg {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .btn-secundario {
+    color: var(--lila-700);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    border-bottom: 2px solid var(--lila-300);
+    padding-bottom: 4px;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-secundario:hover {
+    color: var(--lila-900);
+    border-color: var(--lila-700);
+  }
+  
+  /* Hero imagen */
+  .hero-imagen-wrapper {
+    position: relative;
+    text-align: center;
+  }
+  
+  .hero-foto-container {
+    width: 380px;
+    height: 380px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .hero-foto-fondo {
+    position: absolute;
+    inset: 0;
+    background: var(--lila-700);
+    border-radius: 50%;
+    transform: rotate(-3deg);
+  }
+  
+  .hero-foto {
+    position: absolute;
+    inset: 8px;
+    background: url('img/maribel.png') center/cover;
+    border-radius: 50%;
+    border: 6px solid var(--blanco);
+    box-shadow: 0 20px 40px rgba(79, 33, 137, 0.25);
+  }
+  
+  .hero-credencial {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    background: var(--blanco);
+    padding: 14px 22px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(79, 33, 137, 0.15);
+    text-align: left;
+    border: 2px solid var(--lila-200);
+  }
+  
+  .hero-credencial-titulo {
+    font-family: var(--fuente-titulo);
+    font-size: 22px;
+    color: var(--lila-800);
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+  
+  .hero-credencial-sub {
+    font-size: 12px;
+    color: var(--texto-suave);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  
+  /* ============ SECCIÓN: POR QUÉ ============ */
+  .seccion {
+    padding: 90px 5%;
+    position: relative;
+  }
+  
+  .contenedor {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .seccion-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+  
+  .seccion-etiqueta {
+    display: inline-block;
+    color: var(--lila-600);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  
+  .seccion h2 {
+    font-size: clamp(36px, 5vw, 56px);
+    color: var(--lila-900);
+    margin-bottom: 16px;
+    letter-spacing: 1.5px;
+  }
+  
+  .seccion-intro {
+    font-size: 18px;
+    color: var(--texto-suave);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  /* Sección Importancia neurociencia */
+  .importancia {
+    background: var(--blanco);
+  }
+  
+  .importancia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .importancia-imagen-wrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(79, 33, 137, 0.15);
+    aspect-ratio: 1;
+  }
+  
+  .importancia-imagen-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .importancia-imagen-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(126, 63, 204, 0.15), rgba(244, 161, 199, 0.15));
+    pointer-events: none;
+  }
+  
+  .importancia-texto h3 {
+    font-size: 32px;
+    color: var(--lila-900);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+  
+  .importancia-texto p {
+    font-size: 16px;
+    color: var(--texto-suave);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+  
+  .importancia-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 32px;
+  }
+  
+  .stat-card {
+    background: var(--lila-50);
+    padding: 24px;
+    border-radius: 16px;
+    border-left: 4px solid var(--lila-600);
+  }
+  
+  .stat-numero {
+    font-family: var(--fuente-titulo);
+    font-size: 42px;
+    color: var(--lila-700);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  
+  .stat-texto {
+    font-size: 13px;
+    color: var(--texto-suave);
+    line-height: 1.4;
+  }
+  
+  /* ============ BENEFICIOS DOBLES ============ */
+  .beneficios {
+    background: linear-gradient(180deg, var(--lila-50), var(--lila-100));
+  }
+  
+  /* Imagen emocional madre-hijo */
+  .imagen-emocional {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(79, 33, 137, 0.2);
+    position: relative;
+    aspect-ratio: 16 / 7;
+  }
+  
+  .imagen-emocional img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+  
+  .imagen-emocional-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(55, 21, 98, 0.4) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 40px 30px;
+  }
+  
+  .imagen-emocional-frase {
+    color: var(--blanco);
+    font-family: var(--fuente-titulo);
+    font-size: clamp(22px, 3vw, 36px);
+    text-align: center;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    max-width: 800px;
+  }
+  
+  .beneficios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 50px;
+  }
+  
+  .beneficio-card {
+    background: var(--blanco);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(79, 33, 137, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .beneficio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(79, 33, 137, 0.15);
+  }
+  
+  .beneficio-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--lila-500), var(--lila-700));
+  }
+  
+  .beneficio-icono {
+    width: 60px;
+    height: 60px;
+    background: var(--lila-100);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--lila-700);
+  }
+  
+  .beneficio-card h3 {
+    font-size: 28px;
+    color: var(--lila-800);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+  
+  .beneficio-card .subtitulo {
+    color: var(--lila-500);
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    display: block;
+  }
+  
+  .beneficio-lista {
+    list-style: none;
+  }
+  
+  .beneficio-lista li {
+    padding: 12px 0 12px 32px;
+    position: relative;
+    color: var(--texto-principal);
+    font-size: 15px;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--lila-100);
+  }
+  
+  .beneficio-lista li:last-child {
+    border-bottom: none;
+  }
+  
+  .beneficio-lista li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 18px;
+    width: 18px;
+    height: 18px;
+    background: var(--lila-100);
+    border-radius: 50%;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237E3FCC' stroke-width='3'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  /* ============ OBJETIVOS ============ */
+  .objetivos {
+    background: var(--blanco);
+  }
+  
+  .objetivos-lista {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 50px;
+  }
+  
+  .objetivo-item {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    background: var(--lila-50);
+    border-radius: 16px;
+    transition: background 0.3s ease;
+  }
+  
+  .objetivo-item:hover {
+    background: var(--lila-100);
+  }
+  
+  .objetivo-numero {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: var(--lila-700);
+    color: var(--blanco);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--fuente-titulo);
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  
+  .objetivo-texto h4 {
+    font-family: var(--fuente-titulo);
+    font-size: 22px;
+    color: var(--lila-900);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  
+  .objetivo-texto p {
+    color: var(--texto-suave);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* ============ CREDENCIALES ============ */
+  .credenciales {
+    background: linear-gradient(135deg, var(--lila-800), var(--lila-900));
+    color: var(--blanco);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .credenciales::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(244, 161, 199, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  
+  .credenciales .seccion-etiqueta {
+    color: var(--rosa-acento);
+  }
+  
+  .credenciales h2 {
+    color: var(--blanco);
+  }
+  
+  .credenciales-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .credenciales-foto {
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 1;
+    background: url('img/maribel.png') center/cover;
+    border-radius: 20px;
+    border: 4px solid var(--blanco);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    margin: 0 auto;
+  }
+  
+  .credenciales-bio {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 24px;
+  }
+  
+  .credenciales-lista {
+    list-style: none;
+    margin-top: 24px;
+  }
+  
+  .credenciales-lista li {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  
+  .credenciales-lista li:last-child {
+    border-bottom: none;
+  }
+  
+  .credencial-icono {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: rgba(244, 161, 199, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rosa-acento);
+  }
+  
+  .credencial-icono svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .credencial-link {
+    color: var(--rosa-acento);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px dashed rgba(244, 161, 199, 0.5);
+    transition: all 0.2s ease;
+  }
+  
+  .credencial-link:hover {
+    color: var(--blanco);
+    border-color: var(--blanco);
+  }
+  
+  /* Marca NeuroEduca */
+  .marca-banner {
+    margin-top: 50px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  
+  .marca-logo {
+    width: 110px;
+    height: auto;
+    flex-shrink: 0;
+  }
+  
+  .marca-info {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .marca-info h4 {
+    font-family: var(--fuente-titulo);
+    font-size: 28px;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    color: var(--lila-900);
+  }
+  
+  .marca-info p {
+    font-size: 14px;
+    color: var(--lila-700);
+    font-style: italic;
+  }
+  
+  /* ============ MODALIDAD ============ */
+  .modalidad {
+    background: var(--lila-100);
+  }
+  
+  .modalidad-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 50px;
+  }
+  
+  .modalidad-card {
+    background: var(--blanco);
+    padding: 36px 28px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(79, 33, 137, 0.06);
+  }
+  
+  .modalidad-icono {
+    width: 64px;
+    height: 64px;
+    background: var(--lila-100);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: var(--lila-700);
+  }
+  
+  .modalidad-card h4 {
+    font-family: var(--fuente-titulo);
+    font-size: 24px;
+    color: var(--lila-800);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  
+  .modalidad-card p {
+    color: var(--texto-suave);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  /* ============ CTA FINAL ============ */
+  .cta-final {
+    background: linear-gradient(135deg, var(--lila-600), var(--lila-800));
+    color: var(--blanco);
+    text-align: center;
+    padding: 100px 5%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(244, 161, 199, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  
+  .cta-final-contenido {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .cta-final h2 {
+    font-size: clamp(40px, 6vw, 64px);
+    margin-bottom: 20px;
+    color: var(--blanco);
+    letter-spacing: 1.5px;
+  }
+  
+  .cta-final p {
+    font-size: 18px;
+    margin-bottom: 36px;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+  }
+  
+  .cta-final .btn-principal {
+    background: var(--blanco);
+    color: var(--lila-800);
+    font-size: 18px;
+    padding: 22px 44px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  }
+  
+  .cta-final .btn-principal:hover {
+    background: var(--lila-50);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  }
+  
+  .cta-final-info {
+    margin-top: 24px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* ============ FOOTER ============ */
+  .footer {
+    background: var(--lila-900);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 50px 5% 30px;
+    text-align: center;
+  }
+  
+  .footer-logo {
+    width: 90px;
+    height: auto;
+    margin-bottom: 16px;
+    background: white;
+    padding: 8px;
+    border-radius: 12px;
+  }
+  
+  .footer-marca {
+    font-family: var(--fuente-titulo);
+    font-size: 28px;
+    color: var(--blanco);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  
+  .footer-tagline {
+    font-style: italic;
+    margin-bottom: 24px;
+    color: var(--rosa-acento);
+  }
+  
+  .footer-info {
+    font-size: 14px;
+    margin-bottom: 16px;
+    line-height: 1.7;
+  }
+  
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 24px;
+  }
+  
+  /* ============ WHATSAPP FLOTANTE ============ */
+  .whatsapp-flotante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+    z-index: 99;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    animation: pulso 2s infinite;
+  }
+  
+  @keyframes pulso {
+    0%, 100% { box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4); }
+    50% { box-shadow: 0 8px 24px rgba(37, 211, 102, 0.7), 0 0 0 12px rgba(37, 211, 102, 0); }
+  }
+  
+  .whatsapp-flotante:hover {
+    transform: scale(1.1);
+  }
+  
+  .whatsapp-flotante svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+  }
+  
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    .hero-contenido {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    
+    .hero-datos {
+      justify-content: center;
+    }
+    
+    .hero-cta-grupo {
+      justify-content: center;
+    }
+    
+    .hero-foto-container {
+      width: 280px;
+      height: 280px;
+    }
+    
+    .hero-subtitulo {
+      margin: 0 auto 32px;
+    }
+    
+    .importancia-grid,
+    .credenciales-grid,
+    .beneficios-grid,
+    .objetivos-lista,
+    .modalidad-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    
+    .seccion {
+      padding: 60px 5%;
+    }
+    
+    .credenciales-foto {
+      max-width: 280px;
+    }
+    
+    .marca-banner {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .imagen-emocional {
+      aspect-ratio: 4 / 3;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .nav {
+      padding: 10px 4%;
+    }
+    
+    .nav-logo {
+      height: 38px;
+    }
+    
+    .nav-cta {
+      padding: 8px 14px;
+      font-size: 12px;
+    }
+    
+    .hero {
+      padding: 50px 5% 70px;
+    }
+    
+    .btn-principal {
+      padding: 16px 28px;
+      font-size: 14px;
+      width: 100%;
+      justify-content: center;
+    }
+    
+    .hero-foto-container {
+      width: 240px;
+      height: 240px;
+    }
+    
+    .beneficio-card {
+      padding: 28px 24px;
+    }
+    
+    .objetivo-item {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+      align-items: center;
+    }
+    
+    .whatsapp-flotante {
+      width: 54px;
+      height: 54px;
+      bottom: 20px;
+      right: 20px;
+    }
+    
+    .whatsapp-flotante svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+  
+  /* ============ ANIMACIONES ============ */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .hero-etiqueta,
+  .hero h1,
+  .hero-subtitulo,
+  .hero-datos,
+  .hero-cta-grupo {
+    animation: fadeUp 0.8s ease forwards;
+  }
+  
+  .hero h1 { animation-delay: 0.1s; }
+  .hero-subtitulo { animation-delay: 0.2s; }
+  .hero-datos { animation-delay: 0.3s; }
+  .hero-cta-grupo { animation-delay: 0.4s; }
+  
+  .hero-foto-container {
+    animation: fadeUp 1s ease 0.3s forwards;
+    opacity: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAVEGACIÓN ============ -->
+<nav class="nav">
+  <div class="nav-marca">
+    <img src="img/logo-neuroeduca.jpg" alt="NeuroEduca" class="nav-logo">
+  </div>
+  <a href="https://wa.me/50247655788?text=Hola%20Maribel,%20me%20interesa%20agendar%20la%20charla%20El%20Poder%20Invisible%20de%20Mam%C3%A1%20para%20mi%20instituci%C3%B3n" class="nav-cta" target="_blank" rel="noopener">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    Agendar
+  </a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-contenido">
+    <div class="hero-texto">
+      <span class="hero-etiqueta">Charla · Mes de la Madre</span>
+      <h1>El Poder<br>Invisible de<br><span class="destacado">Mamá</span></h1>
+      <p class="hero-subtitulo">Una charla transformadora basada en neurociencia: descubre cómo el bienestar emocional de mamá moldea el cerebro y la seguridad de sus hijos.</p>
+      
+      <div class="hero-datos">
+        <span class="dato-pill">Duración: 60 minutos</span>
+        <span class="dato-pill">Presencial o virtual</span>
+        <span class="dato-pill">Empresas y colegios</span>
+      </div>
+      
+      <div class="hero-cta-grupo">
+        <a href="https://wa.me/50247655788?text=Hola%20Maribel,%20me%20interesa%20agendar%20la%20charla%20El%20Poder%20Invisible%20de%20Mam%C3%A1%20para%20mi%20instituci%C3%B3n" class="btn-principal" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Agenda la charla por WhatsApp
+        </a>
+        <a href="#beneficios" class="btn-secundario">Ver beneficios</a>
+      </div>
+    </div>
+    
+    <div class="hero-imagen-wrapper">
+      <div class="hero-foto-container">
+        <div class="hero-foto-fondo"></div>
+        <div class="hero-foto"></div>
+        <div class="hero-credencial">
+          <div class="hero-credencial-titulo">MARIBEL GODOY</div>
+          <div class="hero-credencial-sub">Neuropsicóloga · Educadora</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ POR QUÉ NEUROCIENCIA ============ -->
+<section class="seccion importancia">
+  <div class="contenedor">
+    <div class="seccion-header">
+      <span class="seccion-etiqueta">Por qué importa</span>
+      <h2>La ciencia detrás del amor materno</h2>
+      <p class="seccion-intro">El cerebro de un niño no se construye solo con genética. Cada interacción con su madre lo está moldeando, y la ciencia ya tiene mucho que decir al respecto.</p>
+    </div>
+    
+    <div class="importancia-grid">
+      <div class="importancia-imagen-wrapper">
+        <img src="img/cerebro-infantil.jpg" alt="Niño aprendiendo sobre el cerebro humano - Neurociencia infantil">
+        <div class="importancia-imagen-overlay"></div>
+      </div>
+      
+      <div class="importancia-texto">
+        <h3>Tu bienestar es el suyo</h3>
+        <p>Durante los primeros años de vida, el cerebro de tu hijo se desarrolla a un ritmo asombroso. Las experiencias emocionales con su mamá no son simples recuerdos: se convierten en arquitectura cerebral.</p>
+        <p>La calidad del vínculo afectivo, el tono de voz, la mirada, el contacto y, sobre todo, el estado emocional de la madre, dejan una huella neurológica que influye en cómo el niño aprenderá, se relacionará y enfrentará el mundo.</p>
+        
+        <div class="importancia-stats">
+          <div class="stat-card">
+            <div class="stat-numero">90%</div>
+            <div class="stat-texto">del cerebro se desarrolla antes de los 5 años</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-numero">+1M</div>
+            <div class="stat-texto">de conexiones neuronales se forman cada segundo en la primera infancia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFICIOS ============ -->
+<section class="seccion beneficios" id="beneficios">
+  <div class="contenedor">
+    <!-- Imagen emocional madre-hijo -->
+    <div class="imagen-emocional">
+      <img src="img/madre-hijo.jpg" alt="Madre abrazando a su hijo - Vínculo afectivo">
+      <div class="imagen-emocional-overlay">
+        <p class="imagen-emocional-frase">"El primer mundo que conoce un niño es el cerebro de su madre"</p>
+      </div>
+    </div>
+    
+    <div class="seccion-header">
+      <span class="seccion-etiqueta">Para todos</span>
+      <h2>Beneficios para mamás e instituciones</h2>
+      <p class="seccion-intro">Una charla pensada con doble propósito: empodera a las mujeres con conocimiento valioso y posiciona a tu institución como un espacio que cuida genuinamente a su comunidad.</p>
+    </div>
+    
+    <div class="beneficios-grid">
+      <!-- Card mamás -->
+      <div class="beneficio-card">
+        <div class="beneficio-icono">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </div>
+        <h3>Para las Mamás</h3>
+        <span class="subtitulo">Empoderamiento real</span>
+        <ul class="beneficio-lista">
+          <li>Comprende cómo tus emociones impactan directamente el cerebro de tu hijo</li>
+          <li>Aprende herramientas prácticas de autocuidado emocional con base científica</li>
+          <li>Reduce la culpa materna al conocer cómo funciona realmente el desarrollo infantil</li>
+          <li>Fortalece el vínculo afectivo con técnicas validadas por la neurociencia</li>
+          <li>Descubre por qué tu bienestar no es egoísmo, es la mejor inversión para tu hijo</li>
+        </ul>
+      </div>
+      
+      <!-- Card institución -->
+      <div class="beneficio-card">
+        <div class="beneficio-icono">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18"></path>
+            <path d="M5 21V7l8-4v18"></path>
+            <path d="M19 21V11l-6-4"></path>
+            <line x1="9" y1="9" x2="9" y2="9.01"></line>
+            <line x1="9" y1="12" x2="9" y2="12.01"></line>
+            <line x1="9" y1="15" x2="9" y2="15.01"></line>
+            <line x1="9" y1="18" x2="9" y2="18.01"></line>
+          </svg>
+        </div>
+        <h3>Para la Institución</h3>
+        <span class="subtitulo">Inversión estratégica</span>
+        <ul class="beneficio-lista">
+          <li>Demuestra compromiso genuino con la salud mental y el bienestar familiar</li>
+          <li>Mejora el clima organizacional o educativo en una fecha emocionalmente significativa</li>
+          <li>Posiciona a tu marca como una institución que cuida a las personas, no solo los resultados</li>
+          <li>Fortalece el vínculo con colaboradoras o familias de la comunidad educativa</li>
+          <li>Genera contenido valioso de relaciones públicas para redes sociales y comunicación interna</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OBJETIVOS ============ -->
+<section class="seccion objetivos">
+  <div class="contenedor">
+    <div class="seccion-header">
+      <span class="seccion-etiqueta">Lo que vivirán</span>
+      <h2>Objetivos de la charla</h2>
+      <p class="seccion-intro">Una hora intencional, diseñada para informar, conmover y dejar herramientas reales que las asistentes puedan aplicar desde ese mismo día.</p>
+    </div>
+    
+    <div class="objetivos-lista">
+      <div class="objetivo-item">
+        <div class="objetivo-numero">01</div>
+        <div class="objetivo-texto">
+          <h4>Comprender</h4>
+          <p>Explicar de forma clara y amena cómo el cerebro infantil se desarrolla en relación con el cuidado materno.</p>
+        </div>
+      </div>
+      
+      <div class="objetivo-item">
+        <div class="objetivo-numero">02</div>
+        <div class="objetivo-texto">
+          <h4>Reconocer</h4>
+          <p>Identificar la influencia del bienestar emocional materno en la seguridad afectiva de los hijos.</p>
+        </div>
+      </div>
+      
+      <div class="objetivo-item">
+        <div class="objetivo-numero">03</div>
+        <div class="objetivo-texto">
+          <h4>Aplicar</h4>
+          <p>Compartir herramientas prácticas de regulación emocional y crianza consciente con base neurocientífica.</p>
+        </div>
+      </div>
+      
+      <div class="objetivo-item">
+        <div class="objetivo-numero">04</div>
+        <div class="objetivo-texto">
+          <h4>Transformar</h4>
+          <p>Resignificar la maternidad desde una mirada compasiva, científica y libre de culpa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CREDENCIALES ============ -->
+<section class="seccion credenciales">
+  <div class="contenedor">
+    <div class="seccion-header">
+      <span class="seccion-etiqueta">Quién imparte</span>
+      <h2>Lcda. Maribel Godoy</h2>
+      <p class="seccion-intro" style="color: rgba(255,255,255,0.85);">Una profesional que une el rigor de la ciencia con la sensibilidad del corazón.</p>
+    </div>
+    
+    <div class="credenciales-grid">
+      <div class="credenciales-foto"></div>
+      
+      <div>
+        <p class="credenciales-bio">Soy Maribel Godoy, psicóloga con 14 años de trayectoria profesional. Mi pasión es traducir la ciencia del cerebro a un lenguaje accesible que transforme vidas, especialmente la de las mujeres y las familias.</p>
+        
+        <ul class="credenciales-lista">
+          <li>
+            <span class="credencial-icono">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </span>
+            <span><strong>Maestría en Neuropsicología y Educación</strong> · Universidad Internacional de La Rioja (UNIR), España</span>
+          </li>
+          <li>
+            <span class="credencial-icono">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            </span>
+            <span><strong>Licenciatura en Psicología</strong> · 14 años de experiencia clínica y educativa</span>
+          </li>
+          <li>
+            <span class="credencial-icono">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </span>
+            <span><strong>Practicante certificada en ThetaHealing</strong> · Sanación energética e integración mente-cuerpo</span>
+          </li>
+          <li>
+            <span class="credencial-icono">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <span><strong>Conferencista invitada</strong> en <a href="https://www.pmi.org/" target="_blank" rel="noopener" class="credencial-link">Project Management Institute (PMI)</a>, Nylontex S.A., Procuraduría de los Derechos Humanos, Municipalidad de Guatemala, ASCASVIP, entre otras instituciones.</span>
+          </li>
+          <li>
+            <span class="credencial-icono">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <span><strong>Fundadora de NeuroEduca</strong> · Espacio educativo dedicado a transformar el aprendizaje desde la ciencia y el corazón.</span>
+          </li>
+        </ul>
+        
+        <div class="marca-banner">
+          <img src="img/logo-neuroeduca.jpg" alt="Logo NeuroEduca" class="marca-logo">
+          <div class="marca-info">
+            <h4>NEUROEDUCA</h4>
+            <p>"Transformando el aprendizaje desde la ciencia y el corazón"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODALIDAD ============ -->
+<section class="seccion modalidad">
+  <div class="contenedor">
+    <div class="seccion-header">
+      <span class="seccion-etiqueta">Cómo trabajamos</span>
+      <h2>Modalidades disponibles</h2>
+      <p class="seccion-intro">Adaptamos la charla al formato que mejor le funcione a tu institución, sin perder profundidad ni calidez.</p>
+    </div>
+    
+    <div class="modalidad-grid">
+      <div class="modalidad-card">
+        <div class="modalidad-icono">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h4>Presencial</h4>
+        <p>Imparto la charla en tus instalaciones, ideal para crear ambiente y conexión emocional directa con la audiencia.</p>
+      </div>
+      
+      <div class="modalidad-card">
+        <div class="modalidad-icono">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <h4>Virtual</h4>
+        <p>Vía Zoom, Meet o la plataforma de tu institución. Perfecto para alcance regional o equipos remotos.</p>
+      </div>
+      
+      <div class="modalidad-card">
+        <div class="modalidad-icono">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="6" x2="12" y2="12"/><line x1="12" y1="12" x2="16" y2="14"/></svg>
+        </div>
+        <h4>Híbrida</h4>
+        <p>Combina audiencia presencial y virtual simultáneamente, para llegar a todos sin importar dónde estén.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="cta-final">
+  <div class="cta-final-contenido">
+    <h2>Regala una experiencia que transforme</h2>
+    <p>Este Mes de la Madre, sorprende a las mujeres de tu institución con un espacio que las haga sentir vistas, valoradas y empoderadas con conocimiento real. Contáctame y diseñemos juntas una experiencia inolvidable.</p>
+    
+    <a href="https://wa.me/50247655788?text=Hola%20Maribel,%20me%20interesa%20agendar%20la%20charla%20El%20Poder%20Invisible%20de%20Mam%C3%A1%20para%20mi%20instituci%C3%B3n" class="btn-principal" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Agenda tu charla por WhatsApp
+    </a>
+    
+    <p class="cta-final-info">+502 4765 5788 · Respuesta en menos de 24 horas</p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <img src="img/logo-neuroeduca.jpg" alt="NeuroEduca" class="footer-logo">
+  <div class="footer-marca">NEUROEDUCA</div>
+  <p class="footer-tagline">Transformando el aprendizaje desde la ciencia y el corazón</p>
+  <p class="footer-info">
+    Lcda. Maribel Godoy · Neuropsicóloga y Educadora<br>
+    WhatsApp: +502 4765 5788 · Guatemala
+  </p>
+  <p class="footer-copy">© 2025 NeuroEduca. Todos los derechos reservados.</p>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/50247655788?text=Hola%20Maribel,%20me%20interesa%20agendar%20la%20charla%20El%20Poder%20Invisible%20de%20Mam%C3%A1%20para%20mi%20instituci%C3%B3n" class="whatsapp-flotante" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+</body>
+</html>
