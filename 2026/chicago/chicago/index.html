@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chicago Trip · Junio 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #0f0f14;
+    --deep: #16161f;
+    --card: #1e1e2a;
+    --border: #2a2a38;
+    --gold: #c9a84c;
+    --gold-light: #e8c96d;
+    --teal: #4ecdc4;
+    --blush: #ff6b6b;
+    --text: #e8e6f0;
+    --muted: #8b8a9b;
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--night);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background: var(--night);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 100%, rgba(78,205,196,0.08) 0%, transparent 50%),
+      linear-gradient(180deg, #0f0f14 0%, #12121a 100%);
+  }
+
+  .skyline-svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    opacity: 0.18;
+  }
+
+  .stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 8%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 60% 20%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 5%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 25%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 40%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 45% 35%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 12%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 55%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 48%, rgba(255,255,255,0.3) 0%, transparent 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px 24px;
+    max-width: 800px;
+  }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0.9;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 10vw, 96px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .hero-dates {
+    display: inline-flex;
+    gap: 32px;
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    padding: 16px 32px;
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(8px);
+  }
+
+  .hero-date-item {
+    text-align: center;
+  }
+
+  .hero-date-item .label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .hero-date-item .value {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .hero-divider { width: 1px; height: 40px; background: var(--border); align-self: center; }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* ── WEATHER BANNER ── */
+  .weather-banner {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+
+  .weather-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .weather-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .weather-stats {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .w-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  .w-stat .icon { font-size: 18px; }
+  .w-stat strong { color: var(--gold-light); font-weight: 600; }
+
+  /* ── SECTIONS ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section { padding: 80px 0; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .section-intro {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    margin: 80px 0;
+    opacity: 0.3;
+  }
+
+  /* ── HISTORY ── */
+  .history-section { background: var(--deep); }
+
+  .history-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  @media (max-width: 700px) {
+    .history-grid { grid-template-columns: 1fr; }
+  }
+
+  .history-card {
+    background: var(--card);
+    padding: 32px;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s;
+  }
+
+  .history-card:hover { border-color: var(--gold); }
+
+  .history-card .year {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .history-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .history-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── TRANSPORT ── */
+  .transport-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .transport-step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0.3;
+    line-height: 1;
+    text-align: center;
+    padding-top: 4px;
+  }
+
+  .step-content h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .step-content p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .step-tag {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+    margin-top: 8px;
+  }
+
+  /* ── HOTELS ── */
+  .hotels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .hotels-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .hotels-grid { grid-template-columns: 1fr; }
+  }
+
+  .hotel-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+
+  .hotel-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+  }
+
+  .hotel-tier {
+    padding: 6px 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .tier-luxury { background: rgba(201,168,76,0.15); color: var(--gold); }
+  .tier-mid { background: rgba(78,205,196,0.1); color: var(--teal); }
+  .tier-budget { background: rgba(255,107,107,0.1); color: var(--blush); }
+
+  .hotel-body { padding: 20px; }
+
+  .hotel-body h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .hotel-neighborhood {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .hotel-body p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .hotel-price {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--gold-light);
+  }
+
+  /* ── LUGGAGE ── */
+  .luggage-section { background: var(--deep); }
+
+  .luggage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  @media (max-width: 700px) {
+    .luggage-grid { grid-template-columns: 1fr; }
+  }
+
+  .luggage-list h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .luggage-list h3::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .luggage-list ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .luggage-list ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .luggage-list ul li::before {
+    content: '·';
+    color: var(--gold);
+    font-size: 20px;
+    line-height: 0;
+    flex-shrink: 0;
+  }
+
+  /* ── ITINERARY DAYS ── */
+  .days-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .day-tab {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: transparent;
+    padding: 8px 18px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+
+  .day-tab.active,
+  .day-tab:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--night);
+  }
+
+  .day-panel { display: none; }
+  .day-panel.active { display: block; }
+
+  .day-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .day-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0.2;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .day-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .day-info .date-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 64px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .tl-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    padding: 28px 0;
+    position: relative;
+  }
+
+  .tl-time {
+    text-align: right;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    padding-top: 4px;
+    position: relative;
+  }
+
+  .tl-time::after {
+    content: '';
+    position: absolute;
+    right: -30px;
+    top: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.6;
+  }
+
+  .tl-body {
+    padding-left: 16px;
+  }
+
+  .tl-body h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .tl-body p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+
+  .tl-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .tag-art { background: rgba(78,205,196,0.1); color: var(--teal); border: 1px solid rgba(78,205,196,0.2); }
+  .tag-food { background: rgba(255,107,107,0.1); color: var(--blush); border: 1px solid rgba(255,107,107,0.2); }
+  .tag-culture { background: rgba(201,168,76,0.1); color: var(--gold); border: 1px solid rgba(201,168,76,0.2); }
+  .tag-star { background: rgba(150,100,255,0.1); color: #a78bfa; border: 1px solid rgba(150,100,255,0.2); }
+  .tag-batman { background: rgba(60,60,100,0.3); color: #94a3b8; border: 1px solid rgba(100,100,160,0.3); }
+  .tag-music { background: rgba(255,180,50,0.1); color: #fbbf24; border: 1px solid rgba(255,180,50,0.2); }
+  .tag-transport { background: rgba(100,200,100,0.1); color: #86efac; border: 1px solid rgba(100,200,100,0.2); }
+  .tag-futbol { background: rgba(50,200,100,0.1); color: #6ee7b7; border: 1px solid rgba(50,200,100,0.2); }
+
+  .cost-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--gold-light);
+    margin-top: 8px;
+  }
+
+  .tip-box {
+    background: rgba(78,205,196,0.06);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 4px 4px 0;
+    padding: 12px 16px;
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--teal);
+    line-height: 1.6;
+  }
+
+  .tip-box strong { color: var(--teal); font-size: 10px; letter-spacing: 1px; font-family: 'Space Mono', monospace; display: block; margin-bottom: 4px; }
+
+  /* ── WORLD CUP ── */
+  .worldcup-card {
+    background: linear-gradient(135deg, rgba(50,168,82,0.08) 0%, rgba(255,223,0,0.05) 100%);
+    border: 1px solid rgba(50,168,82,0.25);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .worldcup-card::before {
+    content: '⚽';
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    font-size: 48px;
+    opacity: 0.15;
+  }
+
+  .worldcup-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .worldcup-card p {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .match-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(50,168,82,0.15);
+    font-size: 13px;
+  }
+
+  .match-teams { font-weight: 600; color: var(--white); }
+  .match-date { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); }
+  .match-venue { font-size: 11px; color: var(--muted); }
+
+  /* ── BARS / JAZZ ── */
+  .bars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 700px) {
+    .bars-grid { grid-template-columns: 1fr; }
+  }
+
+  .bar-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 24px;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+  }
+
+  .bar-card:hover { border-color: var(--gold); }
+
+  .bar-card .bar-icon { font-size: 28px; margin-bottom: 12px; }
+
+  .bar-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .bar-card .neighborhood {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .bar-card p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── RECOMMENDATIONS ── */
+  .reco-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .reco-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .reco-grid { grid-template-columns: 1fr; }
+  }
+
+  .reco-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 24px;
+    border-radius: 4px;
+  }
+
+  .reco-card .reco-icon { font-size: 24px; margin-bottom: 12px; }
+
+  .reco-card h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .reco-card p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── JORDAN ── */
+  .jordan-hero {
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a0505 40%, #0a0a0f 100%);
+    border: 1px solid rgba(200,30,30,0.25);
+    border-radius: 4px;
+    padding: 40px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .jordan-hero::before {
+    content: '🏀';
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    font-size: 80px;
+    opacity: 0.08;
+  }
+
+  .jordan-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    font-weight: 700;
+    color: rgba(200,30,30,0.15);
+    line-height: 1;
+    position: absolute;
+    right: 40px;
+    bottom: -10px;
+  }
+
+  .jordan-hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .jordan-hero .jordan-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #ef4444;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .jordan-hero p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 640px;
+  }
+
+  .jordan-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .jordan-stat {
+    text-align: center;
+    background: rgba(200,30,30,0.08);
+    border: 1px solid rgba(200,30,30,0.2);
+    border-radius: 4px;
+    padding: 16px 24px;
+  }
+
+  .jordan-stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #ef4444;
+    display: block;
+    line-height: 1;
+  }
+
+  .jordan-stat .lbl {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+  }
+
+  .jordan-spots {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  @media (max-width: 700px) {
+    .jordan-spots { grid-template-columns: 1fr; }
+  }
+
+  .jordan-spot {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .jordan-spot:hover {
+    border-color: #ef4444;
+    transform: translateY(-3px);
+  }
+
+  .jordan-spot-header {
+    background: rgba(200,30,30,0.1);
+    border-bottom: 1px solid rgba(200,30,30,0.2);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .jordan-spot-header .icon { font-size: 20px; }
+
+  .jordan-spot-header h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .jordan-spot-header .addr {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: #ef4444;
+    margin-left: auto;
+    letter-spacing: 1px;
+  }
+
+  .jordan-spot-body {
+    padding: 20px;
+  }
+
+  .jordan-spot-body p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    padding: 48px 24px;
+    text-align: center;
+  }
+
+  footer p {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    line-height: 2;
+  }
+
+  footer .gold { color: var(--gold); }
+
+  /* ── STAR WARS SPECIAL ── */
+  .starwars-card {
+    background: linear-gradient(135deg, rgba(100,60,200,0.08) 0%, rgba(20,20,40,0.9) 100%);
+    border: 1px solid rgba(150,100,255,0.3);
+    border-radius: 4px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .starwars-card::after {
+    content: '⭐';
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    font-size: 40px;
+    opacity: 0.15;
+  }
+
+  .starwars-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .starwars-card .sw-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: #a78bfa;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .starwars-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  /* ── BIG INFO BOX ── */
+  .info-box {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    padding: 20px 24px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-top: 12px;
+  }
+
+  .info-box strong { color: var(--gold-light); font-weight: 600; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .timeline::before { left: 48px; }
+    .tl-item { grid-template-columns: 80px 1fr; }
+    .tl-time::after { right: -20px; }
+    section { padding: 56px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="stars"></div>
+
+  <!-- Minimal Chicago skyline silhouette -->
+  <svg class="skyline-svg" viewBox="0 0 1440 300" xmlns="http://www.w3.org/2000/svg" fill="white">
+    <rect x="0" y="250" width="1440" height="50"/>
+    <rect x="40" y="200" width="30" height="50"/><rect x="80" y="180" width="40" height="70"/><rect x="130" y="160" width="25" height="90"/>
+    <rect x="165" y="140" width="50" height="110"/><rect x="165" y="130" width="10" height="10"/><rect x="220" y="150" width="35" height="100"/>
+    <rect x="260" y="130" width="20" height="120"/><rect x="285" y="120" width="45" height="130"/><rect x="285" y="110" width="10" height="10"/>
+    <rect x="335" y="145" width="30" height="105"/><rect x="370" y="100" width="60" height="150"/><rect x="400" y="90" width="8" height="10"/>
+    <rect x="435" y="130" width="35" height="120"/><rect x="475" y="115" width="50" height="135"/><rect x="530" y="80" width="70" height="170"/>
+    <rect x="560" y="70" width="10" height="10"/><rect x="605" y="140" width="30" height="110"/><rect x="640" y="110" width="45" height="140"/>
+    <rect x="690" y="125" width="35" height="125"/><rect x="730" y="95" width="55" height="155"/><rect x="748" y="85" width="8" height="10"/>
+    <rect x="790" y="135" width="30" height="115"/><rect x="825" y="115" width="40" height="135"/><rect x="870" y="100" width="60" height="150"/>
+    <rect x="935" y="130" width="30" height="120"/><rect x="970" y="155" width="35" height="95"/><rect x="1010" y="120" width="45" height="130"/>
+    <rect x="1060" y="145" width="30" height="105"/><rect x="1095" y="165" width="40" height="85"/><rect x="1140" y="140" width="35" height="110"/>
+    <rect x="1180" y="170" width="30" height="80"/><rect x="1215" y="185" width="40" height="65"/><rect x="1260" y="200" width="25" height="50"/>
+    <rect x="1290" y="185" width="35" height="65"/><rect x="1330" y="195" width="30" height="55"/><rect x="1365" y="205" width="40" height="45"/>
+  </svg>
+
+  <div class="hero-content">
+    <p class="eyebrow">✈ Guatemala City → O'Hare International</p>
+    <h1>Chi<em>cago</em></h1>
+    <p class="hero-sub">The Windy City · Junio 2026</p>
+
+    <div class="hero-dates">
+      <div class="hero-date-item">
+        <span class="label">Llegada</span>
+        <span class="value">23 Jun · 7:40 AM</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-date-item">
+        <span class="label">Noches</span>
+        <span class="value">3 noches</span>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-date-item">
+        <span class="label">Salida</span>
+        <span class="value">26 Jun · 3:40 PM</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>explorar</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ WEATHER ═══════════════════════════ -->
+<div class="weather-banner">
+  <div class="weather-inner">
+    <span class="weather-title">🌤 Clima · Late June</span>
+    <div class="weather-stats">
+      <div class="w-stat"><span class="icon">🌡️</span><span>Máx. <strong>26–27°C (79–80°F)</strong></span></div>
+      <div class="w-stat"><span class="icon">🌙</span><span>Mín. <strong>18–20°C (64–68°F)</strong></span></div>
+      <div class="w-stat"><span class="icon">☀️</span><span><strong>10 horas</strong> de sol al día</span></div>
+      <div class="w-stat"><span class="icon">💧</span><span>Posibles lluvias (<strong>~70% humedad</strong>)</span></div>
+      <div class="w-stat"><span class="icon">🌊</span><span>Brisa del <strong>Lago Michigan</strong></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ HISTORIA ═══════════════════════════ -->
+<section class="history-section">
+  <div class="container">
+    <p class="section-label">Historia</p>
+    <h2 class="section-title">Chicago: Una ciudad<br>que se reinventó</h2>
+    <p class="section-intro">Antes de llegar, conoce la historia fascinante de la ciudad que transformó su tragedia en grandeza arquitectónica.</p>
+
+    <div class="history-grid">
+      <div class="history-card">
+        <div class="year">1833</div>
+        <h3>Fundación en los pantanos</h3>
+        <p>Chicago se incorpora como pueblo con apenas 350 habitantes a orillas del lago Michigan. Su nombre proviene de la palabra algonquina "shikaakwa" — una cebolla silvestre que crecía en la región. Nadie imaginaba que en menos de 60 años sería la segunda ciudad más grande de América.</p>
+      </div>
+      <div class="history-card">
+        <div class="year">1871</div>
+        <h3>El Gran Incendio de Chicago</h3>
+        <p>El 8 de octubre, un incendio catastrófico —supuestamente iniciado en el establo de Mrs. O'Leary— destruyó más de 17,000 edificios y dejó a 100,000 personas sin hogar. Paradójicamente, fue el catalizador que convirtió a Chicago en la capital mundial de la arquitectura moderna.</p>
+      </div>
+      <div class="history-card">
+        <div class="year">1885</div>
+        <h3>El primer rascacielos del mundo</h3>
+        <p>El Home Insurance Building, diseñado por William LeBaron Jenney, se convierte en el primer edificio con estructura de acero de la historia. Chicago no solo se reconstruyó —inventó una nueva forma de construir ciudades. La Escuela de Chicago de Arquitectura nace aquí.</p>
+      </div>
+      <div class="history-card">
+        <div class="year">1893</div>
+        <h3>La Feria Mundial del Siglo</h3>
+        <p>La Exposición Colombiana transforma Chicago ante el mundo. 27 millones de visitantes acuden a ver maravillas modernas como la primera rueda de la fortuna (Ferris Wheel), el Crisco, el jugo de naranja en botella, y la primera cena de AC/DC. La ciudad se consolida como metrópolis global.</p>
+      </div>
+      <div class="history-card">
+        <div class="year">1920s</div>
+        <h3>El Jazz, el Blues y Al Capone</h3>
+        <p>Durante la Prohibición, Chicago se convierte en el epicentro del jazz y el blues —músicos afroamericanos del sur llenan los clubes de South Side. Al mismo tiempo, Al Capone controla el crimen organizado. El Green Mill, donde irás, fue uno de sus refugios favoritos. El jazz de Chicago moldeó la música popular del siglo XX.</p>
+      </div>
+      <div class="history-card">
+        <div class="year">Hoy</div>
+        <h3>Datos que asombran</h3>
+        <p>Chicago tiene más premios James Beard (los "Oscar" de la gastronomía) que cualquier otra ciudad de EE.UU. Su sistema de túneles subterráneos "Lower Wacker" es tan extenso que sirvió de Gotham City en Batman. El río Chicago es el único río del mundo que fue invertido en su flujo artificialmente, en 1900.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ TRANSPORT ═══════════════════════════ -->
+<section>
+  <div class="container">
+    <p class="section-label">Transporte</p>
+    <h2 class="section-title">Del aeropuerto<br>a tu hotel</h2>
+    <p class="section-intro">Llegás a las 7:40 AM al O'Hare (ORD). Aquí tu guía paso a paso sin complicaciones.</p>
+
+    <div class="transport-steps">
+      <div class="transport-step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Desembarque en O'Hare International (ORD)</h3>
+          <p>Siguen señales "Baggage Claim" (equipaje de mano = sin espera). Después pasan por aduana e inmigración. Tienen pasaporte guatemalteco, así que van a la fila "All Passports". El proceso suele tomar 30-60 min a esa hora.</p>
+          <span class="step-tag">⏱ 7:40 AM llegada</span>
+        </div>
+      </div>
+      <div class="transport-step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Tomar el "L" Train — Blue Line hacia el centro</h3>
+          <p>La estación del CTA Blue Line está en el nivel inferior (Lower Level) del aeropuerto, accesible desde los Terminales 1, 2 y 3. Buscan letrero azul que dice "CTA Trains". Compran la Ventra Card en las máquinas: 1-day pass (~$5 USD) o 3-day pass (~$15 USD). El tren sale del aeropuerto directamente al downtown sin trasbordos. <strong>Funciona 24/7.</strong></p>
+          <div class="info-box">
+            <strong>💰 Costo:</strong> El trayecto desde O'Hare tiene tarifa especial de <strong>$5 USD</strong> por persona (en lugar de $2.50). El 3-day pass es la mejor opción para su viaje — cubre todos los trenes y buses del CTA ilimitado.<br><br>
+            <strong>⏱ Tiempo:</strong> 40–55 minutos hasta el Loop (centro). Recomiendan salir de O'Hare a las <strong>~9:00 AM</strong> para llegar al hotel cerca de las 10:00 AM.
+          </div>
+          <span class="step-tag">🚇 Blue Line · O'Hare → Clark/Lake o Washington</span>
+        </div>
+      </div>
+      <div class="transport-step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Alternativa: Rideshare (Uber/Lyft)</h3>
+          <p>Si llegan cansadas o quieren más comodidad, Uber/Lyft desde O'Hare al Loop o River North cuesta entre <strong>$40–$70 USD</strong> (más propina) y tarda 25–45 minutos dependiendo del tráfico. La recogida es en el nivel de llegadas, área marcada "Rideshare".</p>
+          <span class="step-tag">💸 $40–70 USD · 25–45 min</span>
+        </div>
+      </div>
+      <div class="transport-step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Moverse por Chicago durante el viaje</h3>
+          <p>El CTA (buses + "L" trains) cubre prácticamente todo lo que necesitan. Las líneas más útiles: <strong>Red Line</strong> (norte-sur), <strong>Blue Line</strong> (O'Hare ↔ Loop), <strong>Brown Line</strong> (River North, Wrigley). Para los trayectos cortos entre barrios usa <strong>Lyft/Uber</strong> (~$10–15). <strong>No alquilen carro</strong> — el parking cuesta $40–75/noche y Chicago tiene tráfico complicado.</p>
+          <div class="tip-box">
+            <strong>🚀 TIP</strong>
+            Descarguen la app <strong>Transit</strong> antes de llegar — es gratuita, muestra llegadas en tiempo real de todos los trenes y buses CTA, y funciona sin plan de datos intenso.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ HOTELS ═══════════════════════════ -->
+<section style="background: var(--deep);">
+  <div class="container">
+    <p class="section-label">Hospedaje</p>
+    <h2 class="section-title">Dónde quedarse</h2>
+    <p class="section-intro">Recomendamos ubicarse en <strong>River North</strong> o <strong>The Loop</strong> — a caminata de Millennium Park, el Riverwalk, la arquitectura y la vida nocturna. Todo centralizado para no correr.</p>
+
+    <div class="hotels-grid">
+      <div class="hotel-card">
+        <div class="hotel-tier tier-luxury">✦ Luxury</div>
+        <div class="hotel-body">
+          <h3>Hotel EMC2</h3>
+          <p class="hotel-neighborhood">Streeterville · Magnificent Mile</p>
+          <p>Boutique hotel con temática de arte y ciencia. Diseño industrial-elegante, arte curado en cada habitación, ubicación perfecta entre el lago y el Mag Mile. El bar Art Bar es un punto social ideal. Moderno, íntimo y con mucha personalidad.</p>
+          <span class="hotel-price">~$250–350 USD / noche</span>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier tier-luxury">✦ Luxury</div>
+        <div class="hotel-body">
+          <h3>Viceroy Chicago</h3>
+          <p class="hotel-neighborhood">Gold Coast · Near North Side</p>
+          <p>Arquitectura histórica de los años 20 restaurada con diseño contemporáneo sofisticado. Rooftop bar con vistas increíbles a la ciudad. A pasos del lago y la Magnificent Mile. Ideal para quien aprecia el glamour de la vieja Chicago con amenidades modernas.</p>
+          <span class="hotel-price">~$280–400 USD / noche</span>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier tier-mid">◆ Mid-Range</div>
+        <div class="hotel-body">
+          <h3>Moxy Chicago Downtown</h3>
+          <p class="hotel-neighborhood">Magnificent Mile / River North</p>
+          <p>Hotel moderno y vibrante de Marriott pensado para viajeros activos. Bar en el lobby con vida social, habitaciones inteligentemente diseñadas, ubicación excelente a 10 min a pie de Millennium Park. Precio-calidad muy bueno para Chicago.</p>
+          <span class="hotel-price">~$150–220 USD / noche</span>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier tier-mid">◆ Mid-Range</div>
+        <div class="hotel-body">
+          <h3>Hotel Felix</h3>
+          <p class="hotel-neighborhood">River North</p>
+          <p>El primer hotel LEED Silver de Chicago — eco-friendly y boutique con un ambiente cálido y relajado. Habitaciones bien equipadas, ubicación ideal en River North a 3 min a pie de la Brown Line. Ambiente más tranquilo y adulto que los hoteles de moda.</p>
+          <span class="hotel-price">~$140–200 USD / noche</span>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier tier-mid">◆ Mid-Range</div>
+        <div class="hotel-body">
+          <h3>Embassy Suites River North</h3>
+          <p class="hotel-neighborhood">River North · 600 N State St</p>
+          <p>Suites con sala separada, desayuno completo gratuito incluido y happy hour de cortesía. Pool interior. Excelente para quienes quieren sentirse como en casa. A pasos de la Brown/Red Line y todo River North. Muy recomendado en Tripadvisor.</p>
+          <span class="hotel-price">~$130–190 USD / noche</span>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier tier-budget">● Budget-Smart</div>
+        <div class="hotel-body">
+          <h3>Hyatt Centric The Loop</h3>
+          <p class="hotel-neighborhood">The Loop · Downtown</p>
+          <p>Boutique Hyatt moderno en el corazón del Loop. Excelente relación calidad-precio para su ubicación premium. A caminata de Millennium Park, el Art Institute, el Riverwalk y las estaciones del L. Diseño contemporáneo y personal amable.</p>
+          <span class="hotel-price">~$120–180 USD / noche</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 32px; margin-bottom: 48px;">
+      <strong>📌 Mejor relación calidad-precio:</strong> Para este viaje de 3 noches (23, 24 y 25 de junio), el <strong>Moxy Chicago Downtown</strong>, <strong>Hotel Felix</strong> o <strong>The Gwen</strong> ofrecen la mejor mezcla de ubicación, precio y vibe para dos viajeras. El check-in estándar es a las 3 PM — si llegan antes, pidan guardar el equipaje. <strong>⚠️ Verano = temporada alta. Reserven con 4–6 semanas de anticipación.</strong> El tax hotelero en Chicago es ~17% — considérenlo al presupuestar.
+    </div>
+
+    <!-- MID-RANGE ADICIONALES -->
+    <p class="section-label">Más opciones · Precio Medio</p>
+    <h3 class="section-title" style="font-size: 28px; margin-bottom: 16px;">Hospedaje Término Medio</h3>
+    <p class="section-intro">Opciones adicionales con excelente ubicación, buenas amenidades y precio razonable para Chicago en verano.</p>
+
+    <div class="hotels-grid">
+      <div class="hotel-card">
+        <div class="hotel-tier tier-mid">◆ Mid-Range</div>
+        <div class="hotel-body">
+          <h3>The Gwen, a Luxury Collection Hotel</h3>
+          <p class="hotel-neighborhood">Magnificent Mile · 521 N Rush St</p>
+          <p>Alojado en el histórico edificio McGraw-Hill de Art Déco, ofrece habitaciones elegantes con camas plush y baños de mármol. Michelin Guide "One Key". A 4 minutos a pie de la estación Grand (Red Line). Precio accesible para su categoría y ubicación insuperable.</p>
+          <span class="hotel-price">~$120–200 USD / noche</span>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier tier-mid">◆ Mid-Range</div>
+        <div class="hotel-body">
+          <h3>Warwick Allerton Chicago</h3>
+          <p class="hotel-neighborhood">Magnificent Mile · 701 N Michigan Ave</p>
+          <p>Hotel histórico de 1924 con casi 100 años de hospitalidad. Ubicación directamente sobre el Magnificent Mile — no hay mejor dirección en Chicago. Habitaciones clásicas con toques modernos, personal de larga data y ambiente que transpira historia. Ideal para quienes valoran el carácter sobre la modernidad.</p>
+          <span class="hotel-price">~$130–190 USD / noche</span>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier tier-mid">◆ Mid-Range</div>
+        <div class="hotel-body">
+          <h3>Club Quarters Hotel — Loop</h3>
+          <p class="hotel-neighborhood">The Loop · Downtown</p>
+          <p>Hotel funcional y bien posicionado a pocas cuadras del Art Institute, Millennium Park y Skydeck Chicago. Sin lujos innecesarios pero limpio, cómodo y eficiente. Excelente para viajeras que planean pasar el día afuera y necesitan una base sólida. WiFi premium incluido.</p>
+          <span class="hotel-price">~$110–160 USD / noche</span>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier tier-mid">◆ Mid-Range</div>
+        <div class="hotel-body">
+          <h3>The Emily Hotel</h3>
+          <p class="hotel-neighborhood">Fulton Market / West Loop</p>
+          <p>Boutique hotel en el barrio gastronómico más de moda de Chicago. Diseño contemporáneo con toques de madera y cemento. A pasos de los mejores restaurantes de la ciudad (Randolph Restaurant Row). Ideal si la gastronomía es prioridad. Ambiente más local y menos turístico que River North.</p>
+          <span class="hotel-price">~$140–200 USD / noche</span>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier tier-mid">◆ Mid-Range</div>
+        <div class="hotel-body">
+          <h3>Holiday Inn Chicago Dwtn – The Mart</h3>
+          <p class="hotel-neighborhood">River North · 10 E Grand Ave</p>
+          <p>Confiable y bien ubicado en River North con piscina interior — un plus en Chicago. Pool, gimnasio, restaurante en el edificio. Brand conocida con estándares consistentes. A pasos del Merchandise Mart y con fácil acceso a Brown/Red Line. Buena opción sin sorpresas desagradables.</p>
+          <span class="hotel-price">~$120–175 USD / noche</span>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier tier-mid">◆ Mid-Range</div>
+        <div class="hotel-body">
+          <h3>Loews Chicago Hotel</h3>
+          <p class="hotel-neighborhood">Streeterville · Near Magnificent Mile</p>
+          <p>Hotel moderno con rooftop lounge, restaurante on-site y piscina interior cubierta. Habitaciones de buen tamaño con vistas parciales al lago o al skyline. A 5 minutos a pie de Navy Pier y del lago Michigan. Precio competitivo para su nivel de amenidades. Muy bien valorado en Tripadvisor.</p>
+          <span class="hotel-price">~$150–210 USD / noche</span>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier tier-mid">◆ Mid-Range</div>
+        <div class="hotel-body">
+          <h3>Best Western River North</h3>
+          <p class="hotel-neighborhood">River North · 125 W Ohio St</p>
+          <p>La opción mid-range más económica con buena ubicación. Sin pretensiones de boutique pero limpio, cómodo y en pleno River North. A caminata de Michigan Avenue y con acceso fácil a la Brown Line. Estacionamiento disponible a precio razonable. Ideal si el presupuesto es prioridad sin sacrificar ubicación.</p>
+          <span class="hotel-price">~$95–140 USD / noche</span>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier tier-mid">◆ Mid-Range</div>
+        <div class="hotel-body">
+          <h3>Home2 Suites by Hilton River North</h3>
+          <p class="hotel-neighborhood">River North · Chicago Ave</p>
+          <p>Suites con kitchenette equipada — ideal para ahorrar en desayunos y snacks. Diseño moderno y funcional con lavandería en el edificio. Todas las suites tienen sala y área de trabajo. Muy popular entre viajeros que buscan comodidad de apartamento con servicio de hotel. Desayuno continental incluido.</p>
+          <span class="hotel-price">~$130–180 USD / noche</span>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-tier tier-mid">◆ Mid-Range</div>
+        <div class="hotel-body">
+          <h3>Hyatt Place Chicago / Downtown – The Loop</h3>
+          <p class="hotel-neighborhood">The Loop · S Wabash Ave</p>
+          <p>Hyatt moderno con habitaciones más amplias que el promedio en Chicago. Desayuno incluido, bar en el lobby, y ubicación excelente a pasos del Art Institute y las estaciones del L. Diseño contemporáneo sin ser ostentoso. Relación calidad-precio muy sólida para el segmento mid-range del Loop.</p>
+          <span class="hotel-price">~$125–175 USD / noche</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 32px;">
+      <strong>💡 Comparativa rápida mid-range:</strong> Si quieren estar cerca de la VIDA NOCTURNA → <strong>Moxy o The Emily</strong>. Si quieren HISTORIA + UBICACIÓN → <strong>Warwick Allerton o The Gwen</strong>. Si quieren COMODIDAD + PISCINA → <strong>Loews o Holiday Inn Mart</strong>. Si quieren el precio MÁS BAJO con buena ubicación → <strong>Best Western River North o Club Quarters</strong>. Si viajan cómodas con kitchenette → <strong>Home2 Suites o Embassy Suites</strong>.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ MALETA ═══════════════════════════ -->
+<section class="luggage-section">
+  <div class="container">
+    <p class="section-label">Equipaje</p>
+    <h2 class="section-title">Solo equipaje de mano<br>— ella & él</h2>
+    <p class="section-intro">4 días en verano de Chicago. La regla de oro: caben más cosas de las que piensan si doblan bien. La brisa del lago puede sorprender en las noches — planeen en capas.</p>
+
+    <!-- ELLA -->
+    <div style="margin-bottom: 12px;">
+      <p class="section-label" style="margin-bottom: 20px;">👩 Ella — Equipaje de mano</p>
+    </div>
+    <div class="luggage-grid" style="margin-bottom: 48px;">
+      <div class="luggage-list">
+        <h3>👗 Ropa · Ella</h3>
+        <ul>
+          <li>3 outfits de día versátiles (blusas/tops ligeros + 1 jeans + 1 pantalón de tela)</li>
+          <li>1 short o falda para días muy calurosos junto al lago</li>
+          <li><strong>1 outfit especial para el concierto de Star Wars</strong> — algo con personalidad, no hace calor adentro del teatro</li>
+          <li>Tenis cómodos para caminar (imprescindible — mínimo 8–12 km por día)</li>
+          <li>1 par de zapatos o sandalia elegante para la noche / concierto</li>
+          <li>Chaqueta ligera o cardigan — las noches con viento del lago bajan a 17°C</li>
+          <li>Ropa interior para 4 días + 1 extra</li>
+          <li>Calcetines (al menos 4 pares — los tenis piden calcetines frescos)</li>
+          <li>Pijama ligera</li>
+          <li>Traje de baño (opcional, si el hotel tiene piscina)</li>
+        </ul>
+      </div>
+      <div class="luggage-list">
+        <h3>🧴 Belleza & Cuidado · Ella</h3>
+        <ul>
+          <li>Protector solar SPF 50+ facial y corporal (UV alto en junio)</li>
+          <li>Maquillaje básico en formato mini (máx 100ml por líquido)</li>
+          <li>Shampoo / acondicionador en formato viaje o pastilla sólida</li>
+          <li>Crema hidratante facial y corporal mini</li>
+          <li>Desodorante (roll-on o stick — no aerosol en carry-on)</li>
+          <li>Pasta dental + cepillo</li>
+          <li>Pinzas para el cabello, ligas, broches</li>
+          <li>Toallitas desmaquillantes</li>
+          <li>Perfume mini (máx 100ml)</li>
+          <li>Medicamentos personales en bolsa etiquetada</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ÉL -->
+    <div style="margin-bottom: 12px;">
+      <p class="section-label" style="margin-bottom: 20px;">👨 Él — Equipaje de mano</p>
+    </div>
+    <div class="luggage-grid" style="margin-bottom: 48px;">
+      <div class="luggage-list">
+        <h3>👕 Ropa · Él</h3>
+        <ul>
+          <li>3–4 camisetas o playeras (mezcla de casual y un poco más arreglada)</li>
+          <li>1 camisa de botones ligera — sirve para el concierto y la noche</li>
+          <li>2 pantalones (1 jeans + 1 chino o cargo ligero)</li>
+          <li>1 short para días calurosos o visita al lago</li>
+          <li><strong>Look para el concierto de Star Wars</strong> — la camisa + el jeans bien va perfecto</li>
+          <li>Tenis cómodos (usar los más caminados — el asfalto de Chicago no perdona)</li>
+          <li>1 par de zapatos casuales para la noche</li>
+          <li>Chaqueta ligera o hoodie — el lago crea corrientes frescas de noche</li>
+          <li>Ropa interior para 4 días + 1 extra</li>
+          <li>Calcetines (4–5 pares)</li>
+          <li>Pijama o shorts para dormir</li>
+        </ul>
+      </div>
+      <div class="luggage-list">
+        <h3>🪥 Cuidado Personal · Él</h3>
+        <ul>
+          <li>Protector solar SPF 30–50 (el sol de Chicago en verano es intenso)</li>
+          <li>Rastro / máquina de afeitar + gel o espuma de afeitar mini</li>
+          <li>Shampoo mini (o pastilla sólida para ahorrar espacio)</li>
+          <li>Desodorante stick</li>
+          <li>Pasta dental + cepillo</li>
+          <li>Perfume / colonia mini</li>
+          <li>Crema o bálsamo labial (el viento del lago reseca)</li>
+          <li>Medicamentos personales en bolsa etiquetada</li>
+          <li>Condón / antihistamínico si hay alergias estacionales en junio</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- COMPARTIDO -->
+    <div style="margin-bottom: 12px;">
+      <p class="section-label" style="margin-bottom: 20px;">🎒 Compartido — Entre los dos</p>
+    </div>
+    <div class="luggage-grid">
+      <div class="luggage-list">
+        <h3>📱 Tech & Documentos</h3>
+        <ul>
+          <li>Pasaportes físicos + copias digitales en el celular</li>
+          <li>Seguro de viaje (muy recomendado para EE.UU.)</li>
+          <li>Tarjetas de crédito/débito aceptadas en EE.UU. — avisar al banco antes</li>
+          <li>Power bank (al menos 10,000 mAh — los días son largos)</li>
+          <li>Cable USB-C / Lightning según necesiten</li>
+          <li>App Transit descargada (CTA en tiempo real)</li>
+          <li>App Google Maps con mapas offline de Chicago</li>
+          <li>App Uber/Lyft lista</li>
+          <li>Tickets Star Wars en el celular (cso.org)</li>
+          <li>Auriculares (para el tour de audio del Art Institute)</li>
+        </ul>
+      </div>
+      <div class="luggage-list">
+        <h3>⚠️ Reglas carry-on & Tips</h3>
+        <ul>
+          <li>Líquidos: máx. 100 ml por envase, todo en bolsa zip transparente de 1 litro</li>
+          <li>Laptop/tablet: sacar de la bolsa en seguridad (bandeja aparte)</li>
+          <li>Carry-on permitido: máx. 22" × 14" × 9" (verificar con su aerolínea)</li>
+          <li>El Green Mill (jazz) y algunos bares son cash-only — llevar $40–60 en efectivo</li>
+          <li>El hotel guarda el equipaje si llegan antes del check-in</li>
+          <li>Mini paraguas plegable (lluvia repentina es común en junio)</li>
+          <li>Bolsa tote de tela plegable — para compras en Harry Potter Shop y souvenirs</li>
+          <li>El concierto es en teatro — no shorts muy cortos ni chanclas</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top: 32px;">
+      <strong>💡 Truco de espacio:</strong> Usen el método "roll" (enrollar la ropa) en lugar de doblar — caben 30% más prendas. Las chaquetas van al fondo de la maleta. Los zapatos (1 par extra) van en una bolsa de tela dentro del carry-on. Si compran cosas en Chicago (Nike, Harry Potter, Jordan), llevar una tote bag plegable de reserva o enviar por correo desde el hotel — USPS es confiable y barato para paquetes pequeños.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ ITINERARIO ═══════════════════════════ -->
+<section>
+  <div class="container">
+    <p class="section-label">Itinerario</p>
+    <h2 class="section-title">4 días para disfrutar,<br>no para correr</h2>
+    <p class="section-intro">Cada día tiene ritmo propio — mañanas activas, tardes para explorar con calma, noches con carácter. Star Wars, Jordan, Harry Potter, Batman, arte inmersivo, jazz, fútbol y comida de Chicago. Todo con tiempo para respirar.</p>
+
+    <div class="days-nav">
+      <button class="day-tab active" onclick="showDay('day1')">Día 1 · 23 Jun</button>
+      <button class="day-tab" onclick="showDay('day2')">Día 2 · 24 Jun</button>
+      <button class="day-tab" onclick="showDay('day3')">Día 3 · 25 Jun</button>
+      <button class="day-tab" onclick="showDay('day4')">Día 4 · 26 Jun</button>
+    </div>
+
+    <!-- DÍA 1 -->
+    <div class="day-panel active" id="day1">
+      <div class="day-header">
+        <div class="day-number">01</div>
+        <div class="day-info">
+          <h2>Llegada · El Bean · Calles de Batman · Jazz</h2>
+          <p class="date-tag">Martes 23 de Junio · Llegada O'Hare 7:40 AM</p>
+        </div>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-time">7:40 AM</div>
+          <div class="tl-body">
+            <h3>✈ Llegada a O'Hare · Inmigración</h3>
+            <p>Aterrizaje. Siguen señales a inmigración — fila "All Passports". Con equipaje de mano salen directo sin esperar maletas. Proceso estimado 30–50 min. Una vez afuera, buscan la estación Blue Line en el nivel inferior del aeropuerto.</p>
+            <div class="tl-tags"><span class="tag tag-transport">O'Hare ORD</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">9:00 AM</div>
+          <div class="tl-body">
+            <h3>🚇 Blue Line al centro</h3>
+            <p>Compran el 3-Day CTA Pass ($15 USD/persona) en las máquinas de la estación Blue Line dentro del aeropuerto. Sientan del lado derecho del tren para ver la ciudad aparecer desde las vías elevadas. Bajan en <strong>Washington</strong> o <strong>Clark/Lake</strong> para el Loop.</p>
+            <span class="cost-badge">💰 $5 USD tarifa especial O'Hare · ~45 min</span>
+            <div class="tl-tags"><span class="tag tag-transport">Blue Line CTA</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">10:00 AM</div>
+          <div class="tl-body">
+            <h3>🏨 Check-in / dejar equipaje en hotel</h3>
+            <p>El cuarto probablemente no esté listo. Dejan las maletas en consigna del hotel (gratis) y salen a explorar de inmediato.</p>
+            <div class="tl-tags"><span class="tag tag-transport">Hotel · River North o Loop</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">10:30 AM</div>
+          <div class="tl-body">
+            <h3>☕ Desayuno en Lou Mitchell's — desde 1923</h3>
+            <p>565 W Jackson Blvd. Omelets gigantes, waffles y café fuerte. Ambiente genuino de Chicago — los locales llevan casi 100 años desayunando aquí. Primera comida real en la ciudad.</p>
+            <span class="cost-badge">💰 ~$15–22 USD por persona</span>
+            <div class="tl-tags"><span class="tag tag-food">Desayuno histórico 1923</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">12:00 PM</div>
+          <div class="tl-body">
+            <h3>📸 S. LaSalle Street — La Bolsa de Valores & Calles de Batman</h3>
+            <p>Una de las mejores fotos de Chicago: caminan por <strong>South LaSalle Street</strong> mirando al sur hacia el <strong>Chicago Board of Trade</strong> — el edificio Art Déco de 1930 que fue "Wayne Enterprises" en Batman Begins. Esta perspectiva entre rascacielos se llama "el cañón de LaSalle".</p>
+            <p>En esta misma calle se filmó <strong>The Dark Knight</strong>: la persecución en Batpod, el Joker desafiando a Batman, el volteo real del camión de 18 ruedas. También The Batman (2022). El mejor ángulo es desde la intersección con <strong>Monroe Street</strong>, mirando al sur — la Bolsa al fondo.</p>
+            <div class="tip-box">
+              <strong>📍 CÓMO LLEGAR</strong>
+              Desde el hotel caminan hacia el oeste por Monroe o Jackson hasta LaSalle. La Bolsa está en 141 W Jackson Blvd. Todo es calle pública — no hay que entrar a ningún edificio.
+            </div>
+            <span class="cost-badge">💰 GRATIS · Calle pública · solo traer la cámara</span>
+            <div class="tl-tags"><span class="tag tag-batman">Batman · Dark Knight 🦇</span><span class="tag tag-culture">Bolsa de Valores 1930</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">1:30 PM</div>
+          <div class="tl-body">
+            <h3>☁️ Millennium Park — Cloud Gate (El Bean)</h3>
+            <p><strong>Cloud Gate</strong> — "El Bean" — es la foto más icónica de Chicago. Escultura plateada que refleja el skyline en forma distorsionada y surreal. Hay que explorarla por todos los ángulos: desde abajo del arco, desde lejos con todo el skyline, y el selfie en el centro donde se refleja todo. A pasos también el <strong>Jay Pritzker Pavilion</strong> de Frank Gehry y la Crown Fountain. Todo gratis.</p>
+            <span class="cost-badge">💰 GRATIS · Millennium Park es parque público</span>
+            <div class="tl-tags"><span class="tag tag-art">☁️ El Bean · Foto obligatoria</span><span class="tag tag-culture">Gratis</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">3:00 PM</div>
+          <div class="tl-body">
+            <h3>🌊 Chicago Riverwalk — Primera tarde junto al río</h3>
+            <p>El paseo peatonal junto al río Chicago en verano es perfecto. Caminan desde el puente de Michigan Avenue hacia el oeste por el Riverwalk, viendo el <strong>Wrigley Building</strong> (1924), la <strong>Tribune Tower</strong> y el puente DuSable — también locación de The Dark Knight. Paren en alguna barra flotante para una cerveza artesanal o limonada fría con vista al skyline.</p>
+            <div class="tl-tags"><span class="tag tag-art">Riverwalk</span><span class="tag tag-batman">DuSable Bridge</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">5:30 PM</div>
+          <div class="tl-body">
+            <h3>🍕 Cena: Chicago Deep Dish — Lou Malnati's</h3>
+            <p><strong>Lou Malnati's</strong> (439 N Wells St, River North) — la favorita de los locales desde 1971. Pizza con queso, toppings y salsa encima. Tarda 40 min en cocinarse — es parte de la experiencia. Pidan la "Malnati Chicago Classic" con mantequilla en la masa.</p>
+            <span class="cost-badge">💰 ~$25–35 USD por persona</span>
+            <div class="tl-tags"><span class="tag tag-food">Chicago Deep Dish 🍕</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">8:30 PM</div>
+          <div class="tl-body">
+            <h3>🎷 Jazz en vivo — Andy's Jazz Club</h3>
+            <p><strong>Andy's Jazz Club</strong> (11 E Hubbard St, River North) — jazz en vivo desde las 5 PM, a pasos del hotel, sin reserva. Ambiente relajado, primera introducción al jazz de Chicago. El <strong>Green Mill</strong> legendario (Al Capone, 1907) lo dejan para la noche del Día 2.</p>
+            <span class="cost-badge">💰 Sin cover · consumo mínimo</span>
+            <div class="tl-tags"><span class="tag tag-music">Jazz en vivo 🎷</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DÍA 2 -->
+    <div class="day-panel" id="day2">
+      <div class="day-header">
+        <div class="day-number">02</div>
+        <div class="day-info">
+          <h2>Harry Potter · WNDR Inmersivo · Jordan · Fútbol & Jazz</h2>
+          <p class="date-tag">Miércoles 24 de Junio — el día más variado del viaje</p>
+        </div>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-time">9:00 AM</div>
+          <div class="tl-body">
+            <h3>🧇 Brunch — Beatrix River North</h3>
+            <p><strong>Beatrix</strong> (519 N Clark St) — brunch americano abundante, opciones para todos los gustos, ambiente animado. O café y croissant en el Riverwalk si el día está perfecto. Arrancan sin apuros.</p>
+            <div class="tl-tags"><span class="tag tag-food">Brunch casual</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">10:00 AM</div>
+          <div class="tl-body">
+            <h3>⚡ Harry Potter Shop Chicago — 676 N Michigan Ave</h3>
+            <p>¡El momento mágico! La <strong>Harry Potter Shop Chicago</strong> abrió en abril 2025 — solo la segunda en EE.UU. (la otra es en Nueva York). Está en el Magnificent Mile con un <strong>Patronus Ciervo plateado</strong> guardando la entrada exterior.</p>
+            <p>Adentro: casi 10,000 pies cuadrados del mundo mágico. Áreas del <strong>Torneo de los Tres Magos</strong>, el Cáliz de Fuego, huevo dorado, escobas en llamas. La <strong>Butterbeer Bar más grande de EE.UU.</strong> inspirada en speakeasies de Chicago (Butterscotch Popcorn exclusivo). Sección exclusiva de Chicago. Personalización de capas y varitas. Dulcería de Honeydukes.</p>
+            <div class="tip-box">
+              <strong>✨ TIP</strong>
+              Entre semana a las 10 AM es cuando hay menos gente. Calculen 1.5–2 horas para vivirlo con calma. Pidan la Butterbeer caliente Y la fría para comparar. Aprovechen la sección Chicago-exclusiva para souvenirs únicos.
+            </div>
+            <p>Horario: Lun–Jue 10 AM–8 PM · Vie–Sáb 10 AM–9 PM · <strong>harrypottershop.com/pages/chicago</strong></p>
+            <span class="cost-badge">💰 Entrada GRATIS · Butterbeer ~$9–12 · merch desde $15 USD</span>
+            <div class="tl-tags"><span class="tag tag-star">Harry Potter ⚡</span><span class="tag tag-art">Inmersivo · Magnificent Mile</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">12:30 PM</div>
+          <div class="tl-body">
+            <h3>🍔 Almuerzo en el West Loop — Restaurant Row</h3>
+            <p>Uber al West Loop (~$10–12). Randolph Street = la mejor calle gastronómica de Chicago. <strong>Au Cheval</strong> (800 W Randolph) tiene la hamburguesa más famosa de la ciudad — puede haber espera pero vale. Alternativa más rápida: <strong>The Publican</strong> para carnes y cervezas artesanales de primera.</p>
+            <span class="cost-badge">💰 ~$25–40 USD por persona</span>
+            <div class="tl-tags"><span class="tag tag-food">West Loop · Gastronomía</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">2:00 PM</div>
+          <div class="tl-body">
+            <h3>🏀 United Center — Estatua Jordan "The Spirit" + Tienda Bulls</h3>
+            <p>El <strong>United Center</strong> (1901 W Madison St) — "The House That Jordan Built". El atrio de 5 pisos está abierto aunque no haya evento. Ahí está la estatua de bronce de 12 pies de <strong>Michael Jordan en pleno vuelo</strong> — "The Spirit", creada en 1994 el día exacto que se retiró el #23. Foto obligatoria.</p>
+            <p>En el mismo atrio: la <strong>Madhouse Team Store</strong> con jerseys auténticos del #23, gorras y memorabilia oficial de los 6 campeonatos. Los banners del 91, 92, 93, 96, 97 y 98 cuelgan del techo del United Center.</p>
+            <div class="tip-box">
+              <strong>🚌 CÓMO LLEGAR</strong>
+              Uber desde el West Loop: ~$7–9. O caminar 12 min al norte. El atrio tiene acceso por Gate 3½ y entre Gates 4–5, sin necesidad de evento.
+            </div>
+            <span class="cost-badge">💰 Atrio y estatua: GRATIS · Merch a precio oficial</span>
+            <div class="tl-tags"><span class="tag tag-culture">Jordan #23 🏀</span><span class="tag tag-star">Foto obligatoria</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">3:30 PM</div>
+          <div class="tl-body">
+            <h3>🎨 WNDR Museum — Arte Inmersivo #1 de Chicago</h3>
+            <p>El <strong>WNDR Museum</strong> (1130 W Monroe St, West Loop) — votado #1 mejor experiencia inmersiva de Chicago 2026 por USA Today. Más de 15 instalaciones interactivas: pisos de luz reactivos al movimiento, corredores de sonido, salas de espejos infinitos, y la icónica instalación de <strong>Yayoi Kusama "Love Is Calling"</strong> — una de sus Infinity Rooms en Chicago. Termina en <strong>Camp WNDR</strong>, una experiencia de verano nostálgica y surreal.</p>
+            <p>Compren tickets online anticipado para ahorrar hasta 35%. Calculen 1.5 horas de experiencia.</p>
+            <span class="cost-badge">💰 Desde $28.99 anticipado · $32 en puerta · wndrmuseum.com</span>
+            <div class="tl-tags"><span class="tag tag-art">Arte Inmersivo · Kusama 🎨</span><span class="tag tag-star">Experiencia única</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">6:00 PM</div>
+          <div class="tl-body">
+            <h3>⚽ Ver el partido de Brasil — Copa del Mundo 2026</h3>
+            <p>Chicago no es sede del Mundial pero tiene las mejores watch parties del país. Brasil juega en el Grupo C — si hay partido que coincida con su visita (o si Brasil avanzó a eliminatorias), estos son los mejores lugares para vivirlo:</p>
+            <div class="worldcup-card">
+              <h3>🏆 Donde ver a Brasil en Chicago</h3>
+              <div class="match-row">
+                <span class="match-teams">🏠 <strong>Soccer House</strong> — West Town</span>
+                <span class="match-venue">Bar exclusivo de fútbol con rooftop garden · reservas en choosechicago.com</span>
+              </div>
+              <div class="match-row">
+                <span class="match-teams">⚽ <strong>The Globe Pub</strong> — North Center</span>
+                <span class="match-venue">El más legendario · abre 6:30 AM para partidos · ambiente auténtico</span>
+              </div>
+              <div class="match-row">
+                <span class="match-teams">🍺 <strong>Tree House Chicago</strong> — River North</span>
+                <span class="match-venue">Fan zone oficial · todos los partidos · fácil acceso desde hotel</span>
+              </div>
+              <div class="match-row">
+                <span class="match-teams">🌿 <strong>The Northman Beer Garden</strong> — Riverwalk</span>
+                <span class="match-venue">Al aire libre · pantallas exteriores · perfecto para tarde de verano</span>
+              </div>
+            </div>
+            <div class="tip-box">
+              <strong>📅 PARTIDOS DE BRASIL — Grupo C</strong>
+              13 Jun: Brasil vs Marruecos · 19 Jun: Brasil vs Haití · 25 Jun: Brasil vs Escocia (confirmar horarios). Si Brasil avanza, eliminatorias del 28 Jun al 3 Jul. Llegar 45 min antes para conseguir lugar.
+            </div>
+            <span class="cost-badge">💰 Sin cover en mayoría · consumo mínimo recomendado</span>
+            <div class="tl-tags"><span class="tag tag-futbol">⚽ FIFA World Cup 2026</span><span class="tag tag-futbol">🇧🇷 Brasil</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">10:00 PM</div>
+          <div class="tl-body">
+            <h3>🎷 Green Mill — El speakeasy de Al Capone · 1907</h3>
+            <p>La segunda noche es para el legendario <strong>Green Mill Cocktail Lounge</strong> (4802 N Broadway, Uptown) — el club de jazz más histórico de Chicago. Abierto desde 1907, speakeasy original de la Prohibición. Al Capone tenía su propio booth — se puede pedir. Jazz en vivo todas las noches. Toman el Red Line norte hasta Lawrence. Cash-only para algunas cosas — llevar $40 en efectivo.</p>
+            <span class="cost-badge">💰 Cover ~$10–15 USD · Cash helpful</span>
+            <div class="tl-tags"><span class="tag tag-music">Green Mill 🎷 · 1907</span><span class="tag tag-culture">Al Capone's Speakeasy</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DÍA 3 -->
+    <div class="day-panel" id="day3">
+      <div class="day-header">
+        <div class="day-number">03</div>
+        <div class="day-info">
+          <h2>Arte · Arquitectura · Crucero por el río · ⭐ Star Wars en Concert</h2>
+          <p class="date-tag">Jueves 25 de Junio — el día más especial del viaje</p>
+        </div>
+      </div>
+
+      <div class="starwars-card">
+        <div class="sw-meta">⭐ ESTA NOCHE · 7:30 PM · Orchestra Hall at Symphony Center · 220 S Michigan Ave</div>
+        <h3>Star Wars: A New Hope in Concert</h3>
+        <p>La Chicago Symphony Orchestra toca en vivo la partitura completa de John Williams mientras la película se proyecta. Desde $99 USD. Tickets en <strong>cso.org</strong>. El día está diseñado para llegar frescos y emocionados.</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-time">10:00 AM</div>
+          <div class="tl-body">
+            <h3>🎨 Art Institute of Chicago</h3>
+            <p>Uno de los mejores museos de arte del mundo (top 5 en EE.UU.). No intenten verlo todo — 2 horas, enfocadas. Imprescindibles: la sala de Impresionistas (Monet, Seurat, Renoir), "American Gothic" de Grant Wood, "Nighthawks" de Hopper. La <strong>Modern Wing de Renzo Piano</strong> es arquitectura en sí misma, con luz natural extraordinaria. Abren a las 10:30 AM.</p>
+            <span class="cost-badge">💰 $32 USD adultos · artic.edu para tickets online</span>
+            <div class="tl-tags"><span class="tag tag-art">Arte Mundial 🎨</span><span class="tag tag-culture">Top 5 museos EE.UU.</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">12:30 PM</div>
+          <div class="tl-body">
+            <h3>🏛 Chicago Cultural Center — La joya oculta</h3>
+            <p>78 E Washington, a 2 cuadras del Art Institute. Construido en 1897 con las <strong>cúpulas de vitral Tiffany más grandes del mundo</strong> y mosaicos de mármol que quitan el aliento. Completamente <strong>gratis</strong>. Galerías de arte en rotación. La luz en un día soleado de junio es de película. Sorpresivamente pocos turistas lo conocen — lo mejor de Chicago escondido a plena vista.</p>
+            <span class="cost-badge">💰 GRATIS · 78 E Washington St</span>
+            <div class="tl-tags"><span class="tag tag-art">💎 Joya oculta · Tiffany Glass</span><span class="tag tag-culture">1897 · Gratis</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">1:30 PM</div>
+          <div class="tl-body">
+            <h3>🍽 Almuerzo rápido en el Loop</h3>
+            <p>Hora ligera antes del crucero. <strong>Eataly Chicago</strong> (43 E Ohio St) — el mercado italiano más grande del mundo con estaciones de comida rápida y buena calidad. O bien una panadería artesanal del Loop. Nada pesado — el crucero es en una hora.</p>
+            <span class="cost-badge">💰 ~$15–20 USD</span>
+            <div class="tl-tags"><span class="tag tag-food">Almuerzo ligero</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">2:30 PM</div>
+          <div class="tl-body">
+            <h3>⛵ Crucero de Arquitectura — La experiencia de Chicago</h3>
+            <p>El crucero de arquitectura es <em>la</em> experiencia que todos los locales recomiendan sin excepción. Un guía experto los lleva por los tres brazos del <strong>Chicago River</strong> narrando la historia de cada edificio — desde los primeros rascacielos de acero (1885) hasta la Trump Tower y las Torres Marina City. Ven el skyline desde el agua de una manera que ninguna foto puede capturar.</p>
+            <p>Salida desde <strong>Michigan Avenue y Wacker Drive</strong> (puente DuSable, también locación Dark Knight). Duración 75–90 min. Compren tickets adelantado en verano.</p>
+            <span class="cost-badge">💰 Desde $45–57 USD · shorelinesightseeing.com o firstlady.com</span>
+            <div class="tl-tags"><span class="tag tag-art">Arquitectura Chicago ⛵</span><span class="tag tag-culture">Mejor vista del skyline</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">4:30 PM</div>
+          <div class="tl-body">
+            <h3>🌆 Lower Wacker Drive — Gotham City subterráneo</h3>
+            <p>Después del crucero tienen tiempo para un detour de Batman: <strong>Lower Wacker Drive</strong> es el sistema de carreteras subterráneo de Chicago que fue "Gotham City" en The Dark Knight Rises y Batman Begins. Frío, oscuro, cinematográfico. Se accede bajando por Wacker desde Lake Street. Una experiencia que solo los fans de Nolan buscan — y que vale la curiosidad.</p>
+            <div class="tl-tags"><span class="tag tag-batman">Lower Wacker · Gotham City 🦇</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">5:30 PM</div>
+          <div class="tl-body">
+            <h3>🛎 Regreso al hotel — prepararse para la noche de Star Wars</h3>
+            <p>Esta noche merece un look especial. Descansen, arréglense con calma. El Symphony Center está en 220 S Michigan Ave — a caminata de la mayoría de hoteles del Loop/River North. El teatro abre puertas a las 6:30 PM.</p>
+            <div class="tl-tags"><span class="tag tag-star">⭐ Preparación Star Wars Night</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">6:15 PM</div>
+          <div class="tl-body">
+            <h3>🍽 Cena rápida pre-concierto</h3>
+            <p><strong>Terzo Piano</strong> dentro del Art Institute (a 5 min del Symphony Center) — mediterráneo con vistas a Millennium Park, sofisticado pero relajado. Reserven con anticipación. Alternativa más rápida: <strong>Tesori</strong> (65 W Washington) o cualquier opción del Riverwalk cercana al Symphony Center.</p>
+            <span class="cost-badge">💰 ~$35–55 USD por persona con bebida</span>
+            <div class="tl-tags"><span class="tag tag-food">Cena pre-concierto</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">7:00 PM</div>
+          <div class="tl-body">
+            <h3>⭐ Symphony Center — Llegada</h3>
+            <p>Lleguen 30 min antes. El <strong>Orchestra Hall</strong> de 1905 tiene acústica excepcional y arquitectura hermosa. Los fans de Star Wars llegan emocionados — ambiente festivo, gente disfrazada, energía única.</p>
+            <div class="tl-tags"><span class="tag tag-star">Symphony Center · 220 S Michigan</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">7:30 PM</div>
+          <div class="tl-body">
+            <h3>⭐ Star Wars: A New Hope in Concert</h3>
+            <p>La <strong>Chicago Symphony Orchestra</strong> dirigida por Sarah Hicks interpreta la partitura completa de <strong>John Williams</strong> sincronizada con la película en pantalla grande. 90 minutos de pura magia. Cuando suene el primer acorde de la obertura con orquesta completa en vivo, van a entender por qué esto es una experiencia que no tiene comparación.</p>
+            <span class="cost-badge">💰 Desde $99 USD · tickets en cso.org · ¡comprar YA si no lo han hecho!</span>
+            <div class="tl-tags"><span class="tag tag-star">⭐ Star Wars · CSO · John Williams</span><span class="tag tag-music">Orquesta en vivo</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">10:00 PM</div>
+          <div class="tl-body">
+            <h3>🥂 Celebración — Cindy's Rooftop</h3>
+            <p><strong>Cindy's Rooftop Bar</strong> en el Chicago Athletic Association (12 S Michigan Ave) — terraza con vistas directas a Millennium Park y el lago iluminados de noche. El lugar perfecto para brindar por una noche mágica e irrepetible.</p>
+            <div class="tl-tags"><span class="tag tag-food">🥂 Celebración Star Wars</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DÍA 4 -->
+    <div class="day-panel" id="day4">
+      <div class="day-header">
+        <div class="day-number">04</div>
+        <div class="day-info">
+          <h2>Último día: Navy Pier · Nike Jordan · Garrett Popcorn · Regreso</h2>
+          <p class="date-tag">Viernes 26 de Junio · Vuelo ORD → GUA 3:40 PM</p>
+        </div>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-time">8:30 AM</div>
+          <div class="tl-body">
+            <h3>☕ Desayuno de despedida — Portillo's</h3>
+            <p><strong>Portillo's</strong> (100 W Ontario, River North) — el sabor de Chicago en estado puro. Chicago-style hot dog (sin catsup — jamás catsup — con mostaza, relish verde, jitomate, pepinillos, cebolla, pimiento sport y sal de apio), Italian Beef sandwich bañado en jugo, y el famoso <strong>Chocolate Cake Shake</strong> hecho con pastel real. Una mañana perfectamente chicagoana.</p>
+            <span class="cost-badge">💰 ~$12–18 USD</span>
+            <div class="tl-tags"><span class="tag tag-food">Chicago Style · Portillo's</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">10:00 AM</div>
+          <div class="tl-body">
+            <h3>🌊 Navy Pier — El emblema de Chicago en verano</h3>
+            <p><strong>Navy Pier</strong> — el destino más visitado de Chicago, un muelle de 1 km sobre el lago Michigan. En junio hay música en vivo, mercado de artesanos, la <strong>Centennial Wheel</strong> (rueda de la fortuna con vistas al lago y la ciudad), y restaurantes frente al agua. Siéntense 10 minutos frente al lago Michigan: agua dulce que parece océano, Chicago al fondo, brisa perfecta. Una imagen que se lleva en la memoria.</p>
+            <span class="cost-badge">💰 Entrada gratis · Centennial Wheel ~$18</span>
+            <div class="tl-tags"><span class="tag tag-culture">Navy Pier · Lago Michigan 🌊</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">11:30 AM</div>
+          <div class="tl-body">
+            <h3>👟 Nike Chicago Flagship — La experiencia Jordan</h3>
+            <p>La <strong>Nike Chicago Flagship</strong> (669 N Michigan Ave, Magnificent Mile) — una de las tiendas Nike más grandes e impresionantes del mundo. Sección completa de herencia <strong>Jordan Brand</strong>: Air Jordans retros exclusivos de Chicago, murales, paredes de sneakers. Merch que no se consigue fuera de esta tienda. Incluso sin comprar, la experiencia visual y la energía valen la visita.</p>
+            <span class="cost-badge">💰 Entrada gratis · Air Jordans desde $150 USD</span>
+            <div class="tl-tags"><span class="tag tag-culture">Jordan Brand 👟</span><span class="tag tag-star">Air Jordan Legacy</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">12:30 PM</div>
+          <div class="tl-body">
+            <h3>🍿 Garrett Popcorn + últimas compras</h3>
+            <p>No se van sin una bolsa de <strong>Garrett Popcorn</strong> — la mezcla "Chicago Mix" de caramelo y queso cheddar es el snack oficial de Chicago. El aroma jala desde media cuadra. Hay locales por todo Michigan Avenue. Se lleva sellada en el carry-on y dura unos días.</p>
+            <p>Última oportunidad para compras en el Mag Mile — o souvenirs únicos en la tienda del Art Institute o Millennium Park.</p>
+            <span class="cost-badge">💰 ~$10–18 USD · múltiples locales en Michigan Ave</span>
+            <div class="tl-tags"><span class="tag tag-food">Garrett Popcorn 🍿 · Chicago Must</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">1:00 PM</div>
+          <div class="tl-body">
+            <h3>🚇 Regreso a O'Hare — Blue Line</h3>
+            <p>Vuelo: <strong>ORD → GUA 15:40 (3:40 PM)</strong>. Salgan a las <strong>12:50–1:00 PM máximo</strong>. Blue Line desde la estación más cercana (~45–55 min). Lleguen al aeropuerto a las 2:00 PM — suficiente para seguridad y embarque.</p>
+            <div class="tip-box">
+              <strong>⏰ IMPORTANTE</strong>
+              O'Hare en verano: calculen 45–60 min para seguridad. Si se retrasan, Uber directo ($45–60) desde el hotel. Nunca lleguen menos de 1:45 horas antes de un vuelo internacional desde O'Hare en temporada alta.
+            </div>
+            <span class="cost-badge">💰 Blue Line: $2.50 USD · Uber emergencia: $45–60</span>
+            <div class="tl-tags"><span class="tag tag-transport">Blue Line → O'Hare · Regreso 🏠</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════ JORDAN / BULLS ═══════════════════════════ -->
+<section style="background: var(--night);">
+  <div class="container">
+    <p class="section-label">Basketball · His Airness</p>
+    <h2 class="section-title">Michael Jordan<br>& los Chicago Bulls</h2>
+    <p class="section-intro">Chicago es la ciudad de Jordan. No hay otro lugar en el mundo donde el #23 sea tan tangible, tan presente, tan parte del ADN urbano. Esta es su guía completa para vivir la experiencia Jordan en Chicago.</p>
+
+    <div class="jordan-hero">
+      <div class="jordan-num">23</div>
+      <div class="jordan-sub">⭐ "The Best There Ever Was, The Best There Ever Will Be"</div>
+      <h2>Michael Jordan · Chicago Bulls</h2>
+      <p>Seis campeonatos de NBA. Seis MVP de las Finales. Cinco MVP de temporada. El hombre que convirtió a los Chicago Bulls en la franquicia más icónica del deporte mundial. Entre 1984 y 1998, Jordan transformó Chicago — y el basquetbol — para siempre. La cultura del "Air Jordan" nació aquí, en estas calles, en este United Center, en este Chicago.</p>
+      <div class="jordan-stats">
+        <div class="jordan-stat">
+          <span class="num">6</span>
+          <span class="lbl">Campeonatos NBA</span>
+        </div>
+        <div class="jordan-stat">
+          <span class="num">6</span>
+          <span class="lbl">MVP de Finales</span>
+        </div>
+        <div class="jordan-stat">
+          <span class="num">5</span>
+          <span class="lbl">MVP Temporada</span>
+        </div>
+        <div class="jordan-stat">
+          <span class="num">10</span>
+          <span class="lbl">Títulos Anotador</span>
+        </div>
+        <div class="jordan-stat">
+          <span class="num">14x</span>
+          <span class="lbl">All-Star</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="jordan-spots">
+
+      <div class="jordan-spot">
+        <div class="jordan-spot-header">
+          <span class="icon">🏟️</span>
+          <h3>United Center — "The House That Jordan Built"</h3>
+          <span class="addr">1901 W Madison St</span>
+        </div>
+        <div class="jordan-spot-body">
+          <p>El estadio más grande de la NBA (más de 20,000 asientos) y la casa de los Chicago Bulls desde 1994. Conocido como "The Madhouse on Madison", es uno de los recintos deportivos más icónicos del mundo. El mismo año que abrió, Jordan se retiró por primera vez — pero el estadio lleva su marca para siempre.</p>
+          <p>Aunque los Bulls no tienen partidos en junio (la temporada termina en mayo-junio con las Finales), el United Center se puede visitar para ver el exterior, el atrio y la estatua. Si hubiera un evento durante su visita, ¡vayan!</p>
+          <div class="tip-box">
+            <strong>🚌 CÓMO LLEGAR</strong>
+            Tomen el tren Pink Line o Green Line hasta la estación Morgan, luego caminan 10 min hacia el norte. O bien Uber desde River North (~$10–12). No hay estación de tren directa al United Center — planifiquen el transporte.
+          </div>
+          <span class="cost-badge">💰 Exterior y atrio: GRATIS · Eventos: según ticketera</span>
+          <div class="tl-tags" style="margin-top: 10px;">
+            <span class="tag tag-culture">Ícono NBA</span>
+            <span class="tag tag-batman">House That Jordan Built</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jordan-spot">
+        <div class="jordan-spot-header">
+          <span class="icon">🗿</span>
+          <h3>La Estatua "The Spirit" — Foto Obligatoria</h3>
+          <span class="addr">Atrio del United Center · Gate 3½</span>
+        </div>
+        <div class="jordan-spot-body">
+          <p>La estatua de bronce más famosa del deporte. Mide 12 pies (3.7 metros) y representa a Jordan en su pose más icónica: el vuelo, el brazo extendido, el balón en la mano derecha. Creada en 1994 por los escultores Omri y Julie Rotblatt-Amrany, fue inaugurada el mismo día que el #23 fue retirado — 1 de noviembre de 1994.</p>
+          <p>Desde 2017, la estatua está ubicada dentro del atrio de 5 pisos del United Center (antes estaba afuera). Se puede acceder al atrio con la tienda Bulls/Blackhawks por las puertas de Gate 3½ entre Gates 4 y 5, incluso cuando no hay eventos. <strong>La foto aquí es obligatoria para cualquier fan del basquetbol.</strong></p>
+          <span class="cost-badge">💰 GRATIS · Acceso libre al atrio</span>
+          <div class="tl-tags" style="margin-top: 10px;">
+            <span class="tag tag-star">Foto Obligatoria</span>
+            <span class="tag tag-culture">Monumento 1994</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jordan-spot">
+        <div class="jordan-spot-header">
+          <span class="icon">🏪</span>
+          <h3>Madhouse Team Store — Merch Oficial Bulls</h3>
+          <span class="addr">Atrio del United Center</span>
+        </div>
+        <div class="jordan-spot-body">
+          <p>La tienda oficial de los Chicago Bulls y Blackhawks está dentro del United Center Atrium. Aquí encuentran jerseys auténticos del #23, gorras, playeras, memorabilia oficial y artículos exclusivos que no se consiguen en ningún otro lado. Si buscan un jersey de Jordan auténtico y oficial, este es el lugar correcto — más significativo que comprarlo en una tienda random.</p>
+          <p>También tienen camisas, gorras y accesorios de las eras de los 6 campeonatos. Un recuerdo de aquí vale más que cualquier souvenir genérico de la ciudad.</p>
+          <span class="cost-badge">💰 Jerseys desde ~$100 USD · Gorras desde ~$35 USD</span>
+          <div class="tl-tags" style="margin-top: 10px;">
+            <span class="tag tag-culture">Merch Oficial</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jordan-spot">
+        <div class="jordan-spot-header">
+          <span class="icon">👟</span>
+          <h3>Jordan Brand Chicago / Nike Store</h3>
+          <span class="addr">Magnificent Mile · Nike: 669 N Michigan Ave</span>
+        </div>
+        <div class="jordan-spot-body">
+          <p>El original Jordan Brand Flagship Store (32 S State St — "Station 23") cerró, pero la experiencia Jordan más completa hoy se vive en la <strong>Nike Chicago Flagship</strong> en el Magnificent Mile — una de las tiendas Nike más grandes e impresionantes del mundo, con pisos dedicados a la herencia Jordan, Air Jordan Retros exclusivos, paredes de sneakers y experiencias interactivas de personalización.</p>
+          <p>Para Air Jordans exclusivos de Chicago también pueden visitar <strong>SUCCEZZ</strong> en el Loop o los <strong>Foot Locker</strong> del centro — pero la Nike Flagship es la experiencia más inmersiva para fans del legado Jordan.</p>
+          <span class="cost-badge">💰 Zapatos desde $150 USD · Nike Flagship: entrada gratuita</span>
+          <div class="tl-tags" style="margin-top: 10px;">
+            <span class="tag tag-star">Air Jordan Legacy</span>
+            <span class="tag tag-culture">Sneaker Culture</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jordan-spot">
+        <div class="jordan-spot-header">
+          <span class="icon">🏀</span>
+          <h3>Bulls Championship Banners — El Techo del United Center</h3>
+          <span class="addr">Interior del United Center</span>
+        </div>
+        <div class="jordan-spot-body">
+          <p>En el techo del United Center cuelgan los 6 banners de campeonato (1991, 1992, 1993, 1996, 1997, 1998) y el número retirado de Jordan: el #23. También están retirados el #33 de Scottie Pippen, el #10 de Bob Love y el #4 de Jerry Sloan. Ver estos banners en vivo —aunque sea desde el atrio o durante un evento— es una experiencia que cualquier fan del basquetbol entiende visceralmente.</p>
+          <p>Si hay algún evento (concierto, otro partido) durante su visita al United Center, consideren ir solo para ver el interior de la arena y esos banners.</p>
+          <span class="cost-badge">💰 Solo con ticket de evento · Exterior y atrio siempre gratis</span>
+          <div class="tl-tags" style="margin-top: 10px;">
+            <span class="tag tag-culture">6 Campeonatos</span>
+            <span class="tag tag-star">Legado Eterno</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="jordan-spot">
+        <div class="jordan-spot-header">
+          <span class="icon">🍽️</span>
+          <h3>Jordan's — Restaurante Temático</h3>
+          <span class="addr">Nearby United Center · West Side</span>
+        </div>
+        <div class="jordan-spot-body">
+          <p>El West Side alrededor del United Center tiene varios bares y restaurantes que celebran el legado Bulls. Para la experiencia de día completo del Jordan pilgrimage, recomiendamos planear: llegar al United Center al mediodía, ver la estatua y la tienda, almorzar en el área de Fulton Market (10 min en Uber), y luego explorar el barrio que Jordan transformó con su presencia.</p>
+          <p>La zona alrededor del United Center también está siendo renovada como parte del proyecto urbano más grande en la historia de Chicago — una ciudad que Jordan sigue moldeando, incluso décadas después de su retiro.</p>
+          <div class="tip-box">
+            <strong>📅 PLAN SUGERIDO</strong>
+            Dediquen la tarde del Día 2 (24 de junio) a la experiencia Jordan: United Center → Estatua → Tienda oficial → Nike Flagship en el Mag Mile. Un half-day completo de pilgrimage de basquetbol.
+          </div>
+          <div class="tl-tags" style="margin-top: 10px;">
+            <span class="tag tag-food">Gastronomía local</span>
+            <span class="tag tag-culture">West Side Chicago</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Jordan History Box -->
+    <div class="info-box" style="margin-top: 40px; border-color: rgba(200,30,30,0.3);">
+      <strong style="color: #ef4444;">🏀 La Historia de Jordan en Chicago:</strong> Michael Jordan llegó a los Bulls en 1984 como la tercera selección del draft desde la Universidad de North Carolina. En sus primeras temporadas, el equipo perdía en playoffs ante los Boston Celtics y Detroit Pistons — los "Bad Boys" de Isaiah Thomas. Fue solo hasta 1991, cuando Jordan (con Phil Jackson como coach y Scottie Pippen como pareja), dominó la Liga con el Triangle Offense. Los siguientes 8 años son la dinastía más importante del deporte moderno: 3 campeonatos (91-93), retiro para jugar béisbol (1993), regreso épico (1995), otros 3 campeonatos (96-98). <strong style="color: var(--gold-light)">El "Last Dance" de 1998 contra Utah Jazz es uno de los momentos más vistos en la historia del deporte.</strong> Jordan se convirtió en la primera persona en ser declarada atleta multimillonario principalmente por ingresos de su marca — no de su salario como jugador.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ JAZZ & BARS ═══════════════════════════ -->
+<section style="background: var(--deep);">
+  <div class="container">
+    <p class="section-label">Jazz & Beber local</p>
+    <h2 class="section-title">Sabores y melodías<br>de Chicago</h2>
+    <p class="section-intro">Chicago tiene una de las escenas de jazz y blues más ricas del mundo. Aquí los mejores spots para cualquier noche que tengan libre.</p>
+
+    <div class="bars-grid">
+      <div class="bar-card">
+        <div class="bar-icon">🎷</div>
+        <h3>Green Mill Cocktail Lounge</h3>
+        <p class="neighborhood">Uptown · 4802 N Broadway</p>
+        <p>El bar de jazz más histórico de Chicago. Speakeasy original de 1907, favorito de Al Capone. Jazz en vivo todas las noches. Ambiente absolutamente auténtico. Cash-only en muchas cosas. Cover ~$10–15 USD. Una de las experiencias más genuinas de la ciudad.</p>
+      </div>
+      <div class="bar-card">
+        <div class="bar-icon">🎶</div>
+        <h3>Andy's Jazz Club</h3>
+        <p class="neighborhood">River North · 11 E Hubbard St</p>
+        <p>Jazz en vivo todas las noches a partir de las 5 PM. Más accesible y céntrico que el Green Mill. Excelente para una noche de entre semana. Menú de cocktails y comida. No necesitan reserva para la mayoría de shows. Ideal como segunda opción.</p>
+      </div>
+      <div class="bar-card">
+        <div class="bar-icon">🍺</div>
+        <h3>Revolution Brewing</h3>
+        <p class="neighborhood">Logan Square · 2323 N Milwaukee Ave</p>
+        <p>La cervecería artesanal más premiada de Chicago. Ambiente industrial-hipster, cervezas únicas como la Anti-Hero IPA, y comida de bar de calidad. Un poco alejada del centro pero vale el viaje en Blue Line. Prueben la "Bottom Up" o la "Eugene Porter".</p>
+      </div>
+      <div class="bar-card">
+        <div class="bar-icon">🎵</div>
+        <h3>Millennium Park Summer Concert</h3>
+        <p class="neighborhood">The Loop · Jay Pritzker Pavilion</p>
+        <p>Los jueves 19 y 26 de junio hay conciertos gratis en el Pritzker Pavilion. Si su segundo día tiene suerte, junio 19 tiene una celebración especial de Juneteenth con jazz. Traigan una manta, siéntense en el Gran Lawn y disfruten Chicago al aire libre — completamente gratis.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="section-label">Comer & Beber en Chicago</p>
+    <h2 class="section-title">Sabores que<br>no encontrarán en otro lado</h2>
+    <div class="bars-grid" style="margin-top: 32px;">
+      <div class="bar-card">
+        <div class="bar-icon">🌭</div>
+        <h3>Chicago-Style Hot Dog</h3>
+        <p class="neighborhood">Regla: JAMÁS catsup</p>
+        <p>Salchicha de res en pan de semillas de amapola, con mostaza amarilla, relish verde, jitomate, pepinillos, cebolla blanca, pimiento sport y sal de apio. La combinación suena rara y sabe increíble. Pidan en cualquier Portillo's o en puestos callejeros del Loop.</p>
+      </div>
+      <div class="bar-card">
+        <div class="bar-icon">🥩</div>
+        <h3>Italian Beef Sandwich</h3>
+        <p class="neighborhood">Chicago original · no existe fuera</p>
+        <p>Carne de res en rebanadas finas, marinada en especias italianas y bañada en el mismo jugo de cocción ("dipped"), servida en pan italiano. Se puede pedir "wet" (muy mojado) o "dry". Con giardiniera (vegetales en escabeche picante). Pruébenlo en Portillo's o Al's Beef.</p>
+      </div>
+      <div class="bar-card">
+        <div class="bar-icon">🍺</div>
+        <h3>Goose Island Brewery</h3>
+        <p class="neighborhood">Wrigleyville · 1800 N Clybourn Ave</p>
+        <p>La cervecería que puso a Chicago en el mapa artesanal. Su "312 Urban Wheat" lleva el nombre del código de área de Chicago. La Bourbon County Stout es legendaria. Tienen brewpub donde pueden comer y probar cervezas directamente de los tanques.</p>
+      </div>
+      <div class="bar-card">
+        <div class="bar-icon">🍿</div>
+        <h3>Garrett Popcorn</h3>
+        <p class="neighborhood">Varias ubicaciones · Mag Mile</p>
+        <p>La mezcla "Chicago Mix" de palomitas de caramelo y queso cheddar es el snack oficial de la ciudad. Cada local tiene el aroma que llena la calle y jala a la gente. Cómprense una bolsa grande y caminen por Michigan Avenue. Precio: ~$8–15 USD según tamaño.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ RECOMENDACIONES ═══════════════════════════ -->
+<section>
+  <div class="container">
+    <p class="section-label">Tips de Viajera</p>
+    <h2 class="section-title">Para que todo<br>salga perfecto</h2>
+
+    <div class="reco-grid">
+      <div class="reco-card">
+        <div class="reco-icon">📱</div>
+        <h3>Apps esenciales</h3>
+        <p>Descarguen antes de salir: <strong>Transit</strong> (CTA en tiempo real), <strong>Google Maps</strong> (offline), <strong>Uber/Lyft</strong>, <strong>OpenTable</strong> (reservas de restaurantes) y la app de la CSO si van al concierto.</p>
+      </div>
+      <div class="reco-card">
+        <div class="reco-icon">💳</div>
+        <h3>Dinero y propinas</h3>
+        <p>Chicago acepta tarjeta en casi todo. Sin embargo, el Green Mill y algunos bares de jazz piden cash. La propina estándar es <strong>18–20%</strong> en restaurantes y $2 por trago en barras. El tax de restaurantes en Chicago es ~10.5%.</p>
+      </div>
+      <div class="reco-card">
+        <div class="reco-icon">🌡️</div>
+        <h3>Ropa para el clima</h3>
+        <p>Las noches junto al lago pueden bajar a 17–18°C aunque el día esté a 27°C. Lleven siempre una chaqueta ligera o cardigan para la noche. El lago crea su propio microclima. Protector solar para el día es obligatorio.</p>
+      </div>
+      <div class="reco-card">
+        <div class="reco-icon">🚶‍♀️</div>
+        <h3>Chicago es muy caminable</h3>
+        <p>El área de Millennium Park, Riverwalk, Art Institute, LaSalle Street y el Loop se puede hacer totalmente a pie en un radio de 20–30 min. Usen el CTA para ir al Green Mill (Uptown) y Navy Pier. Eviten taxi/Uber para movimientos cortos del centro.</p>
+      </div>
+      <div class="reco-card">
+        <div class="reco-icon">🌅</div>
+        <h3>El lago de madrugada</h3>
+        <p>Si tienen energía una noche, el Lakefront Trail junto al lago Michigan a las 9–10 PM en junio es mágico — aún hay luz y la temperatura es perfecta. Muchos locals corren y andan en bici. Es una de las experiencias más "Chicago" que existen.</p>
+      </div>
+      <div class="reco-card">
+        <div class="reco-icon">📸</div>
+        <h3>Mejores fotos de Chicago</h3>
+        <p>Las mejores fotos del skyline: desde el Riverwalk frente al Trump Tower, desde la Navy Pier mirando al oeste al atardecer, y desde el Cloud Gate con el reflejo del skyline. Para fotos de The Dark Knight: S. LaSalle St mirando sur hacia el Board of Trade.</p>
+      </div>
+      <div class="reco-card">
+        <div class="reco-icon">🔒</div>
+        <h3>Seguridad</h3>
+        <p>El Loop, River North, Magnificent Mile, Millennium Park y Riverwalk son completamente seguros de día y de noche para turistas. Usen sentido común por la noche en zonas menos transitadas. Guarden sus cosas cerca en lugares concurridos.</p>
+      </div>
+      <div class="reco-card">
+        <div class="reco-icon">⛵</div>
+        <h3>CityPASS — ¿Vale la pena?</h3>
+        <p>El Chicago CityPASS (~$98 USD en 2026) incluye el Art Institute, el Shedd Aquarium y otras atracciones. Si planean visitar 3+ museos en 5 días ahorra ~50%. Para este itinerario de 4 días, evalúen según cuántos museos planean visitar.</p>
+      </div>
+      <div class="reco-card">
+        <div class="reco-icon">🗺️</div>
+        <h3>Itinerario en Google Maps</h3>
+        <p>Para guardar todos los lugares en Google Maps: abran Google Maps → toquen "Guardados" → creen una lista llamada "Chicago 2026" → busquen cada lugar de este itinerario y guárdenlos. Pueden compartir la lista entre ambas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer>
+  <p class="gold">✈ Chicago · Junio 23–26, 2026</p>
+  <p>Star Wars · Batman · Jazz · Arte · Arquitectura · Fútbol · Deep Dish</p>
+  <p style="margin-top: 16px; font-size: 9px; opacity: 0.5;">May the Force be with you · Na-na-na-na Batman · The Windy City awaits</p>
+</footer>
+
+<script>
+function showDay(dayId) {
+  document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(dayId).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+
+</body>
+</html>

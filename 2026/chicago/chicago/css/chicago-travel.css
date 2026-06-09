@@ -1,0 +1,24 @@
+/*
+ * Chicago Trip 2026 — Estilos CSS separados
+ * Para usar en WordPress: pegar en Apariencia → Personalizar → CSS adicional
+ * O subir como archivo .css y encolar con functions.php
+ */
+
+:root {
+  --night: #0f0f14;
+  --deep: #16161f;
+  --card: #1e1e2a;
+  --border: #2a2a38;
+  --gold: #c9a84c;
+  --gold-light: #e8c96d;
+  --teal: #4ecdc4;
+  --blush: #ff6b6b;
+  --text: #e8e6f0;
+  --muted: #8b8a9b;
+  --white: #ffffff;
+}
+
+/* Nota: Los estilos completos están embebidos en index.html.
+ * Este archivo es referencia para integración con WordPress themes.
+ * Si usas el método de bloque HTML, los estilos van aquí en CSS adicional.
+ */
